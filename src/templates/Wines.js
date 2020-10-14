@@ -14,7 +14,7 @@ const Wines = ({ data }) => {
 }
 
 export const query = graphql`
-  query byCountry($slug: String) {
+  query byType($slug: String) {
     allWines(filter: { type: { eq: $slug } }) {
       nodes {
         location {

@@ -28,9 +28,9 @@ const StyledLink = styled(Link)`
 
 const NAVBAR_LINKS = [
   { name: "home", path: "/" },
-  { name: "red wines", path: "/reds" },
-  { name: "white wines", path: "/whites" },
-  { name: "sparkling wines", path: "/sparkling" },
+  { name: "red wines", path: "/wines/reds" },
+  { name: "white wines", path: "/wines/whites" },
+  { name: "sparkling wines", path: "/wines/sparkling" },
 ]
 
 const Navbar = () => {

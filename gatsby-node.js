@@ -3,10 +3,10 @@ import fetch from "isomorphic-fetch"
 import customizeWinaData from "./src/utils/customizeWineData"
 
 //const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
-const WINE_TYPES = ["reds", "sparkling"]
+const WINE_TYPES = ["reds", "whites", "sparkling"]
 
 async function getResultsFromAPI() {
-  // aggregates api endpoints into one allWines collection
+  // aggregates multiple api endpoints into one allWines collection
 
   const promises = WINE_TYPES.map(async type => {
     const baseURL = `https://sampleapis.com/wines/api/${type}`
@@ -62,10 +62,10 @@ async function createSingleWinePages({ graphql, actions }) {
 
   data.allWines.nodes.forEach(wine => {
     createPage({
-      path: `/wines/${wine.name}`,
+      path: `/wines/${wine.id}`,
       component: wineTemplate,
       context: {
-        slug: wine.name,
+        slug: wine.id,
       },
     })
   })
@@ -108,17 +108,15 @@ async function createCountryWinesPages({ graphql, actions }) {
     ...new Set(data.allWines.nodes.map(wine => wine.location.country)),
   ]
   console.log(uniqueCountries)
-  uniqueCountries
-    .filter(country => country !== "Spain\n")
-    .forEach(country => {
-      createPage({
-        path: `/wines/${country}`,
-        component: winesTemplate,
-        context: {
-          slug: country,
-        },
-      })
+  uniqueCountries.forEach(country => {
+    createPage({
+      path: `/wines/${country.slice(0, -1)}`,
+      component: winesTemplate,
+      context: {
+        slug: country,
+      },
     })
+  })
 }
 
 export async function sourceNodes(params) {

@@ -16,7 +16,7 @@ const Wine = ({ data }) => {
 
 export const query = graphql`
   query SingleWineQuery($slug: String) {
-    wines(name: { eq: $slug }) {
+    wines(id: { eq: $slug }) {
       id
       image
       price

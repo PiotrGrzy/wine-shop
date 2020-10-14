@@ -72,9 +72,8 @@ const WineListItem = ({ wine }) => {
         <p className="price">{wine.price} zł</p>
         <Button onClick={handleAddToCart}>Add to cart</Button>
       </div>
+      <Link to={`/wines/${wine.id}`}>Show Details</Link>
     </WineCardStyled>
-    //     <Link to={`/wines/${wine.name}`}>
-    // </Link>
   )
 }
 

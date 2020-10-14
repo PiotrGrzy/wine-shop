@@ -47,7 +47,6 @@ const WineList = ({ wines, total, title }) => {
 
   return (
     <div>
-      <h2>{title}</h2>
       <p>total in our stock: {total}</p>
       <input
         type="text"

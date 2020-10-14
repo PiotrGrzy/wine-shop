@@ -6,6 +6,8 @@ const Wines = ({ data }) => {
   const {
     allWines: { nodes: wines, totalCount },
   } = data
+
+  if (!wines) return <p>Wine not found</p>
   return (
     <div className="container">
       <WineList wines={wines} total={totalCount} title="Classis Red Wines" />
@@ -14,7 +16,7 @@ const Wines = ({ data }) => {
 }
 
 export const query = graphql`
-  query ByType($slug: String) {
+  query ByCountry($slug: String) {
     allWines(filter: { location: { country: { eq: $slug } } }) {
       nodes {
         location {
