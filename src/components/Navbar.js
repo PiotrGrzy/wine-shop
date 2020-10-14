@@ -1,0 +1,52 @@
+import React from "react"
+import { Link } from "gatsby"
+import styled from "styled-components"
+
+const StyledNav = styled.nav`
+  padding: 1rem;
+  background-color: var(--wisteria);
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+`
+
+const StyledLink = styled(Link)`
+  font-size: 2rem;
+  color: var(--misty-rose);
+  transition: color 0.2s;
+  text-transform: capitalize;
+  &:hover {
+    color: var(--white);
+  }
+  &[aria-current] {
+    color: var(--dark-purple);
+  }
+`
+
+const NAVBAR_LINKS = [
+  { name: "home", path: "/" },
+  { name: "red wines", path: "/reds" },
+  { name: "white wines", path: "/whites" },
+  { name: "sparkling wines", path: "/sparkling" },
+]
+
+const Navbar = () => {
+  return (
+    <StyledNav>
+      <div className="container">
+        {NAVBAR_LINKS.map(link => {
+          return (
+            <StyledLink key={link.path} to={link.path}>
+              {link.name}
+            </StyledLink>
+          )
+        })}
+      </div>
+    </StyledNav>
+  )
+}
+
+export default Navbar

@@ -1,11 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Delicious Wines`,
+    description: `Pick up the largest variety of wines from all over the world.`,
+    author: `Piotr Grzymowicz`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,8 +15,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-xml`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -25,6 +35,18 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [`300`, `400`, `700`],
+            subsets: [`latin`],
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
