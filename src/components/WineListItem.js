@@ -5,6 +5,7 @@ import { FiShoppingCart } from "react-icons/fi"
 import { Link } from "gatsby"
 import Rating from "./Rating"
 import Button from "./Button"
+import emptyBottle from "../images/empty_bottle.jpg"
 
 const WineCardStyled = styled.li`
   display: grid;
@@ -18,7 +19,9 @@ const WineCardStyled = styled.li`
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -62,7 +65,11 @@ const WineListItem = ({ wine }) => {
   return (
     <WineCardStyled>
       <div className="image-wrapper">
-        <img src={wine.image} alt={wine.name} />
+        <img
+          src={wine.image}
+          alt={wine.name}
+          onerror={`this.src='${emptyBottle}'`}
+        />
       </div>
       <div className="info-wrapper">
         <h5>{wine.name}</h5>

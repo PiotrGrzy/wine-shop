@@ -1,13 +1,9 @@
 import React, { useState } from "react"
-import { sortAsc, sortDesc } from "../utils/sorting"
+import { sortWines } from "../utils/sorting"
 import Pagination from "./Pagination"
 import WineListItem from "./WineListItem"
 import WineListStyles from "../styles/WineListStyles"
-
-const NAME_DES = "NAME_DES"
-const NAME_ASC = "NAME_ASC"
-const PRICE_DES = "PRICE_DES"
-const PRICE_ASC = "PRICE_ASC"
+import { NAME_ASC, NAME_DES, PRICE_ASC, PRICE_DES } from "../consts/sorting"
 
 const WineList = ({ wines, total, title }) => {
   const [searchQuery, setSearchQuery] = useState("")
@@ -21,24 +17,7 @@ const WineList = ({ wines, total, title }) => {
 
   const totalPages = Math.ceil(filteredWines.length / winesPerPage)
 
-  let sortedWines
-
-  switch (sortBy) {
-    case NAME_DES:
-      sortedWines = sortDesc(filteredWines, "name")
-      break
-    case NAME_ASC:
-      sortedWines = sortAsc(filteredWines, "name")
-      break
-    case PRICE_DES:
-      sortedWines = sortDesc(filteredWines, "price")
-      break
-    case PRICE_ASC:
-      sortedWines = sortAsc(filteredWines, "price")
-      break
-    default:
-      sortedWines = filteredWines
-  }
+  const sortedWines = sortWines(sortBy, filteredWines)
 
   const winesWithPagination = sortedWines.splice(
     currentPage * winesPerPage,
