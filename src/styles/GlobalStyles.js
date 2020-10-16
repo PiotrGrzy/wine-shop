@@ -14,6 +14,9 @@ html {
     font-family: 'Montserrat', sans-serif;
     font-size:10px;
     color:var(--black);
+/* background-color: var(--misty-rose);
+background-image: linear-gradient(90deg, var(--misty-rose) 0%, var(--white) 100%); */
+
 }
 *,
 *::before,
@@ -55,9 +58,28 @@ fieldset {
 }
 
 .container {
-    max-width: 1000px;
+    max-width:1000px;
     margin: 0 auto;
 }
+
+
+.carousel {
+    height:40rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+
+}
+
+
+.carousel__btn {
+    font-size:3rem;
+    background-color:rgba(200,200,200, .5);
+    color:white;
+    height:100%;
+  
+}
+
 
 `
 
