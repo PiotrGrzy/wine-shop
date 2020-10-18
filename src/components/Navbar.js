@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const StyledNav = styled.nav`
   padding: 1rem;
-  background-color: var(--wisteria);
+  background-color: var(--dark-purple);
 
   div {
     display: flex;
@@ -18,11 +18,13 @@ const StyledLink = styled(Link)`
   color: var(--misty-rose);
   transition: color 0.2s;
   text-transform: capitalize;
+  border-bottom: 1px solid transparent;
   &:hover {
     color: var(--white);
   }
   &[aria-current] {
-    color: var(--dark-purple);
+    color: var(--white);
+    border-bottom: 1px solid var(--white);
   }
 `
 

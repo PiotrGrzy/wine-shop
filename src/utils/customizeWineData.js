@@ -14,7 +14,7 @@ const customizeWinaData = (wine, type) => {
     winery,
     name,
     rating: {
-      average: (Math.random() * 5).toFixed(2, 10),
+      average: createRandomValue(3, 5).toFixed(),
       reviews: rating.reviews,
     },
     location: {

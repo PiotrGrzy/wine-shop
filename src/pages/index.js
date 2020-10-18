@@ -1,4 +1,6 @@
 import React from "react"
+import styled from "styled-components"
+import Img from "gatsby-image"
 import { Link } from "gatsby"
 import CountryList from "../components/ContryList"
 
@@ -6,6 +8,37 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Carousel from "../components/Carousel"
+
+const StyledWrapper = styled.div`
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: var(--white);
+
+  .img-box {
+    position: relative;
+  }
+
+  h1 {
+    position: absolute;
+    font-size: 12rem;
+    font-weight: 300;
+    z-index: 5;
+    color: var(--white);
+    max-width: 50%;
+    text-align: right;
+    margin: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 4rem 0;
+    color: var(--dark-purple);
+  }
+`
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -59,22 +92,38 @@ const IndexPage = () => {
           discountPercentage
         }
       }
+      imageSharp(fluid: { originalName: { eq: "bg-large.jpg" } }) {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   `)
 
   const {
     allBestSellers: { nodes: bestSellers, totalCount },
     allDiscounted: { nodes: discounted },
+    imageSharp: { fluid },
   } = data
 
   return (
     <>
       <SEO title="Home" />
       <div className="container">
-        <h2>Our Bestselling Wines</h2>
-        <Carousel items={bestSellers} />
-        <h2>Check our Sale</h2>~
-        <Carousel items={discounted} />
+        <StyledWrapper>
+          <section className="hero">
+            <div className="img-box">
+              <h1>Best Wines You Can Find</h1>
+              <Img fluid={fluid} />
+            </div>
+          </section>
+          <section className="offer">
+            <h2>Our Bestselling Wines</h2>
+            <Carousel items={bestSellers} />
+            <h2>Check our Sale</h2>~
+            <Carousel items={discounted} />
+          </section>
+        </StyledWrapper>
       </div>
     </>
   )

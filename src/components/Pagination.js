@@ -15,7 +15,7 @@ const Pagination = ({
           value={itemsPerPage}
           onChange={e => setItemsPerPage(parseInt(e.target.value))}
         >
-          {[20, 30, 50, 70, 100].map(value => (
+          {[20, 30, 50].map(value => (
             <option value={value} key={value}>
               {value}
             </option>

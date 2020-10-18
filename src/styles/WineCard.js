@@ -13,6 +13,7 @@ export const WineCard = styled.div`
   border-top: 1rem solid var(--dark-byzantium);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   color: var(--dark-purple);
+  background-color: var(--white);
 
   & > * {
     box-sizing: content-box;

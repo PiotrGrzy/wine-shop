@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import bg from "../images/wines-bg-napa.jpg"
 
 const GlobalStyles = createGlobalStyle`
 :root {
@@ -14,6 +15,9 @@ html {
     font-family: 'Montserrat', sans-serif;
     font-size:10px;
     color:var(--black);
+    background-image:url(${bg});
+   background-position:fixed;
+
 /* background-color: var(--misty-rose);
 background-image: linear-gradient(90deg, var(--misty-rose) 0%, var(--white) 100%); */
 
@@ -58,7 +62,7 @@ fieldset {
 }
 
 .container {
-    max-width:1000px;
+    max-width:1200px;
     margin: 0 auto;
 }
 

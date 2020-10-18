@@ -1,4 +1,4 @@
-import path, { resolve } from "path"
+import path from "path"
 import fetch from "isomorphic-fetch"
 import customizeWinaData from "./src/utils/customizeWineData"
 
@@ -7,7 +7,6 @@ const WINE_TYPES = ["reds", "whites", "sparkling"]
 
 async function getResultsFromAPI() {
   // aggregates multiple api endpoints into one allWines collection
-
   const promises = WINE_TYPES.map(async type => {
     const baseURL = `https://sampleapis.com/wines/api/${type}`
     const res = await fetch(baseURL)

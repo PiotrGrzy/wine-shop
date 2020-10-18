@@ -25,6 +25,7 @@ const WineCardStyled = styled.li`
   border: 1px solid var(--misty-rose);
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: var(--white);
   .image-wrapper {
     img {
       width: 100%;
@@ -81,7 +82,7 @@ const WineListItem = ({ wine }) => {
   return (
     <WineCardStyled>
       <div className="image-wrapper">
-        <img src={image} alt={name} onerror={`this.src='${emptyBottle}'`} />
+        <img src={image} alt={name} />
       </div>
       <div className="info-wrapper">
         <StyledLink to={`/wines/${id}`}>{name}</StyledLink>

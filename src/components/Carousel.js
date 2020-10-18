@@ -17,7 +17,7 @@ const Carousel = ({ items }) => {
       naturalSlideWidth={250}
       naturalSlideHeight={400}
       totalSlides={30}
-      visibleSlides={2}
+      visibleSlides={3}
       interval={3000}
       isPlaying={true}
       isIntrinsicHeight
