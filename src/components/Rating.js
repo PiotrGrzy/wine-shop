@@ -8,16 +8,7 @@ const StyledRating = styled.div`
   padding-right: 0;
   display: grid;
   column-gap: 5px;
-  /* width: 100px; */
   grid-auto-flow: column;
-`
-
-const GoldStar = styled(BsStarFill)`
-  color: goldenrod;
-`
-
-const GreyStar = styled(BsStarFill)`
-  color: grey;
 `
 
 const Rating = ({ rating }) => {
@@ -26,10 +17,10 @@ const Rating = ({ rating }) => {
   return (
     <StyledRating>
       {goldStars.map((_, i) => (
-        <GoldStar key={i} />
+        <BsStarFill color="goldenrod" key={i} />
       ))}
       {greyStars.map((_, i) => (
-        <GreyStar key={i} />
+        <BsStarFill color="grey" key={i} />
       ))}
       <span>({rating.reviews.slice(0, 2)})</span>
     </StyledRating>

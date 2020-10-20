@@ -54,9 +54,9 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ children }) => {
+const Button = ({ children, ...props }) => {
   return (
-    <StyledButton>
+    <StyledButton {...props}>
       <span>{children}</span>
     </StyledButton>
   )

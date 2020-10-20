@@ -40,10 +40,22 @@ const WineList = ({ wines, total, title }) => {
           <option value={PRICE_DES}>Price highest to lowest</option>
         </select>
       </div>
+      <div>
+        <select
+          value={winesPerPage}
+          onChange={e => setWinesPerPage(parseInt(e.target.value))}
+        >
+          {[20, 30, 50].map(value => (
+            <option value={value} key={value}>
+              {value}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <Pagination
         totalPages={totalPages}
         itemsPerPage={winesPerPage}
-        setItemsPerPage={setWinesPerPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />

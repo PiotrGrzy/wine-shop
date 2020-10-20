@@ -14,7 +14,7 @@ import WineListItem from "./WineListItem"
 const Carousel = ({ items }) => {
   return (
     <CarouselProvider
-      naturalSlideWidth={250}
+      naturalSlideWidth={300}
       naturalSlideHeight={400}
       totalSlides={30}
       visibleSlides={3}
