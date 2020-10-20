@@ -1,5 +1,11 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import StyledLink from "../styles/StyledLink"
+import styled from "styled-components"
+
+const CountryLink = styled(StyledLink)`
+  font-size: 1.2rem;
+`
 
 const query = graphql`
   {
@@ -13,20 +19,25 @@ const query = graphql`
   }
 `
 
-const ContryList = () => {
+const CountryList = () => {
   const data = useStaticQuery(query)
   const uniqueCountries = [
     ...new Set(data.allWines.nodes.map(wine => wine.location.country)),
-  ]
+  ].sort()
+
   return (
     <div>
       {uniqueCountries.map(country => (
-        <Link key={country} to={`/wines/${country.slice(0, -1)}`}>
+        <CountryLink
+          color="var(--dark-purple)"
+          key={country}
+          to={`/wines/${country.slice(0, -1)}`}
+        >
           {country}
-        </Link>
+        </CountryLink>
       ))}
     </div>
   )
 }
 
-export default ContryList
+export default CountryList

@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import StyledWine, { WineCard } from "../styles/WineCard"
+import WineCard from "../styles/WineCard"
+import StyledLink from "../styles/StyledLink"
 import Rating from "../components/Rating"
 import DiscountBadge from "../components/DiscountBadge"
 import BestsellerBadge from "../components/BestsellerBadge"
@@ -64,7 +65,9 @@ const Wine = ({ data }) => {
         <img src={image} alt={name} />
         <div className="heading">
           <h1>{name}</h1>
-          <p className="winery">{winery}</p>
+          <p className="winery">
+            Winery: <StyledLink to={`/wines/${winery}`}>{winery}</StyledLink>
+          </p>
         </div>
         <p className="location">
           {location.country} - {location.region}{" "}

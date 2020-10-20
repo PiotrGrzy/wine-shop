@@ -28,7 +28,7 @@ const Carousel = ({ items }) => {
       </ButtonBack>
       <Slider>
         {items.map((item, i) => (
-          <Slide index={i}>
+          <Slide index={i} kry={item.id}>
             <WineListItem wine={item} />
           </Slide>
         ))}

@@ -1,6 +1,7 @@
 import styled from "styled-components"
+import Wine from "../templates/SingleWine"
 
-export const WineCard = styled.div`
+const WineCard = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 3fr 1fr 1.5fr 1fr;
@@ -83,3 +84,5 @@ export const WineCard = styled.div`
     border-left: none;
   }
 `
+
+export default WineCard

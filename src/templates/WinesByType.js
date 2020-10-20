@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import WineList from "../components/WineList"
 
-const Wines = ({ data }) => {
+const WinesByType = ({ data }) => {
   const {
     allWines: { nodes: wines, totalCount },
   } = data
@@ -40,4 +40,4 @@ export const query = graphql`
   }
 `
 
-export default Wines
+export default WinesByType

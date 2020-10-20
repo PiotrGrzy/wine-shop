@@ -20,7 +20,7 @@ const StyledWrapper = styled.div`
 
   h1 {
     position: absolute;
-    font-size: 12rem;
+    font-size: min(9vw, 12rem);
     font-weight: 300;
     z-index: 5;
     color: var(--white);

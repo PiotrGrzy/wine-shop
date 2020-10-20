@@ -11,7 +11,7 @@ import DiscountBadge from "./DiscountBadge"
 
 const StyledLink = styled(Link)`
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   margin-bottom: 2rem;
   text-align: right;
 `
@@ -25,7 +25,7 @@ const WineCardStyled = styled.li`
   border: 1px solid var(--misty-rose);
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  background-color: #f0e8ee;
+  background-color: var(--white);
   .image-wrapper {
     img {
       width: 100%;
@@ -50,16 +50,11 @@ const WineCardStyled = styled.li`
     width: 100%;
     font-size: 2rem;
     text-align: right;
-
     font-weight: bold;
   }
   .location {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
-`
-
-const StyledIcon = styled(FiShoppingCart)`
-  color: red;
 `
 
 const WineListItem = ({ wine }) => {
@@ -82,7 +77,7 @@ const WineListItem = ({ wine }) => {
   return (
     <WineCardStyled>
       <div className="image-wrapper">
-        <img src={image} alt={name} />
+        <img src={image} alt={name} onError={emptyBottle} />
       </div>
       <div className="info-wrapper">
         <StyledLink to={`/wines/${id}`}>{name}</StyledLink>

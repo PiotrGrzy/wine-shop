@@ -2,8 +2,7 @@ import path from "path"
 import fetch from "isomorphic-fetch"
 import customizeWinaData from "./src/utils/customizeWineData"
 
-//const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
-const WINE_TYPES = ["reds", "whites", "sparkling"]
+const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
 
 async function getResultsFromAPI() {
   // aggregates multiple api endpoints into one allWines collection
@@ -71,7 +70,7 @@ async function createSingleWinePages({ graphql, actions }) {
 }
 
 async function createTypeWinesPages({ actions }) {
-  const winesTemplate = path.resolve("./src/templates/Wines.js")
+  const winesTemplate = path.resolve("./src/templates/WinesByType.js")
   const { createPage } = actions
 
   WINE_TYPES.forEach(type => {
@@ -106,13 +105,46 @@ async function createCountryWinesPages({ graphql, actions }) {
   const uniqueCountries = [
     ...new Set(data.allWines.nodes.map(wine => wine.location.country)),
   ]
-  console.log(uniqueCountries)
+
   uniqueCountries.forEach(country => {
     createPage({
       path: `/wines/${country.slice(0, -1)}`,
       component: winesTemplate,
       context: {
         slug: country,
+      },
+    })
+  })
+}
+
+async function createWineryWinesPages({ graphql, actions }) {
+  const winesTemplate = path.resolve("./src/templates/WinesByWinery.js")
+  const { createPage } = actions
+
+  const { data } = await graphql(`
+    {
+      allWines {
+        totalCount
+        nodes {
+          id
+          winery
+        }
+      }
+    }
+  `)
+
+  const uniqueWineries = [
+    ...new Set(data.allWines.nodes.map(wine => wine.winery)),
+  ]
+
+  console.log(uniqueWineries)
+
+  uniqueWineries.forEach(winery => {
+    createPage({
+      path: `/wines/${winery}`,
+      component: winesTemplate,
+      context: {
+        slug: winery,
       },
     })
   })
@@ -127,5 +159,6 @@ export async function createPages(params) {
     createSingleWinePages(params),
     createTypeWinesPages(params),
     createCountryWinesPages(params),
+    createWineryWinesPages(params),
   ])
 }

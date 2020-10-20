@@ -1,7 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { GrFormNext, GrFormPrevious } from "react-icons/gr"
-import { FcPrevious } from "react-icons/fc"
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs"
 import styled from "styled-components"
 
@@ -41,6 +39,9 @@ const StyledButton = styled.button`
 `
 
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+  if (currentPage > totalPages) {
+    setCurrentPage(totalPages - 1)
+  }
   return (
     <StyledWrapper>
       <div className="buttons">

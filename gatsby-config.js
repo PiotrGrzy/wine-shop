@@ -7,6 +7,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        injectPageProps: false,
+      },
+    },
 
     {
       resolve: `gatsby-source-filesystem`,

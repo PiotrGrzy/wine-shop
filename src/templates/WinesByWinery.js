@@ -2,22 +2,22 @@ import React from "react"
 import { graphql } from "gatsby"
 import WineList from "../components/WineList"
 
-const WinesByCountry = ({ data }) => {
+const WinesByWinery = ({ data, pageContext }) => {
   const {
     allWines: { nodes: wines, totalCount },
   } = data
 
-  if (!wines) return <p>Wine not found</p>
+  if (!wines) return <p>Wines not found</p>
   return (
     <div className="container">
-      <WineList wines={wines} total={totalCount} title="Classis Red Wines" />
+      <WineList wines={wines} total={totalCount} title={pageContext.slug} />
     </div>
   )
 }
 
 export const query = graphql`
-  query ByCountry($slug: String) {
-    allWines(filter: { location: { country: { eq: $slug } } }) {
+  query ByWinery($slug: String) {
+    allWines(filter: { winery: { eq: $slug } }) {
       nodes {
         location {
           country
@@ -42,4 +42,4 @@ export const query = graphql`
   }
 `
 
-export default WinesByCountry
+export default WinesByWinery
