@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
+import styled from "styled-components"
+import StyledLink from "../styles/StyledLink"
 import CountryLinkCarousel from "./CountryLinkCarousel"
 
 const query = graphql`
@@ -15,6 +16,11 @@ const query = graphql`
   }
 `
 
+const CountryLink = styled(StyledLink)`
+  font-size: 1.4rem;
+  margin: 0 0.5rem;
+`
+
 const CountryList = () => {
   const data = useStaticQuery(query)
   const uniqueCountries = [
@@ -23,7 +29,7 @@ const CountryList = () => {
 
   return (
     <div>
-      {/* {uniqueCountries.map(country => (
+      {uniqueCountries.map(country => (
         <CountryLink
           color="var(--dark-purple)"
           key={country}
@@ -31,8 +37,7 @@ const CountryList = () => {
         >
           {country}
         </CountryLink>
-      ))} */}
-      <CountryLinkCarousel links={uniqueCountries} />
+      ))}
     </div>
   )
 }

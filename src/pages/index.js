@@ -70,6 +70,7 @@ const IndexPage = () => {
         filter: { isDiscounted: { eq: true } }
         limit: 30
       ) {
+        totalCount
         nodes {
           image
           winery
@@ -99,8 +100,8 @@ const IndexPage = () => {
   `)
 
   const {
-    allBestSellers: { nodes: bestSellers },
-    allDiscounted: { nodes: discounted },
+    allBestSellers: { nodes: bestSellers, totalCount: bestSellersTotal },
+    allDiscounted: { nodes: discounted, totalCount: discountedTotal },
     imageSharp: { fluid },
   } = data
 
@@ -117,9 +118,9 @@ const IndexPage = () => {
           </section>
           <section className="offer">
             <h2>Our Bestselling Wines</h2>
-            <WineCarousel items={bestSellers} />
+            <WineCarousel items={bestSellers} total={bestSellersTotal} />
             <h2>Check our Sale</h2>~
-            <WineCarousel items={discounted} />
+            <WineCarousel items={discounted} total={discountedTotal} />
           </section>
         </StyledWrapper>
       </div>

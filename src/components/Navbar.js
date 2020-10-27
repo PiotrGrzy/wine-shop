@@ -4,7 +4,6 @@ import CountryList from "./ContryList"
 import WineTypesList from "./WineTypesList"
 
 const StyledNav = styled.nav`
-  width: 100%;
   div {
     width: 100%;
     padding: 0.5rem;

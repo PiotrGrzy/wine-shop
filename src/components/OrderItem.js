@@ -1,10 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { MdRemoveCircleOutline } from "react-icons/md"
+import {
+  addItemToCart,
+  decrementItem,
+  removeItemFromCart,
+} from "../context/CartContext/cartActions"
+import { useCart } from "../context/CartContext/CartContextProvider"
 
 const StyledOrderItem = styled.li`
   display: grid;
-  grid-template-columns: 10rem 1fr repeat(5, 5rem);
+  grid-template-columns: 10rem 1fr repeat(6, 5rem);
   align-items: center;
   background-color: var(--white);
   font-size: 1.8rem;
@@ -17,21 +24,32 @@ const StyledOrderItem = styled.li`
 `
 
 const OrderItem = ({ item }) => {
+  const { dispatch } = useCart()
+
   const {
-    data: { name, price, image },
+    data: { name, price, image, id },
     count,
   } = item
+
   const total = count * price
+
   return (
     <StyledOrderItem>
       <img src={image} alt={name} />
       <h5>{name}</h5>
-      <button>-</button>
+      <button onClick={() => decrementItem(dispatch, id)}>-</button>
       <span>{count}</span>
-      <button>+</button>
+      <button
+        onClick={() => addItemToCart(dispatch, { data: item.data, count: 1 })}
+      >
+        +
+      </button>
 
       <span>{price}</span>
       <span className="total">{total}</span>
+      <button onClick={() => removeItemFromCart(dispatch, id)}>
+        <MdRemoveCircleOutline color="orange" />
+      </button>
     </StyledOrderItem>
   )
 }

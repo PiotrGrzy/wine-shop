@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import "normalize.css"
@@ -15,10 +8,9 @@ import Footer from "./Footer"
 import styled from "styled-components"
 
 const StyledLayout = styled.div`
-  min-height: 95vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 `
 
 const Layout = ({ children }) => {
@@ -36,8 +28,8 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
 
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <StyledLayout>
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
         <Footer />
       </StyledLayout>

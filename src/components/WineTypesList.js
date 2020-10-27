@@ -1,6 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import StyledLink from "../styles/StyledLink"
+import NavDropdown from "./NavDropdown"
+import CountryList from "./ContryList"
 
 const query = graphql`
   {
@@ -26,6 +28,9 @@ const WineTypesList = () => {
           {type} Wines
         </StyledLink>
       ))}
+      <NavDropdown>
+        <CountryList />
+      </NavDropdown>
     </div>
   )
 }

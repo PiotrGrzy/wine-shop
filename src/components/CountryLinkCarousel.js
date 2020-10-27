@@ -37,6 +37,9 @@ const CountryLinkCarousel = ({ links }) => {
         interval={3000}
         isPlaying={true}
         isIntrinsicHeight
+        isPlaying={true}
+        isIntrinsicHeight
+        infinite={true}
       >
         <ButtonBack className="scroll-btn">{"<<<"}</ButtonBack>
         <Slider>

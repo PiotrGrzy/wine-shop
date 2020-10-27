@@ -26,7 +26,9 @@ const StyledCarousel = styled(CarouselProvider)`
   }
 `
 
-const WineCarousel = ({ items }) => {
+const WineCarousel = ({ items, total }) => {
+  console.log(typeof total)
+  console.log(total)
   return (
     <StyledCarousel
       naturalSlideWidth={300}
@@ -36,6 +38,8 @@ const WineCarousel = ({ items }) => {
       interval={3000}
       isPlaying={true}
       isIntrinsicHeight
+      step={3}
+      infinite={true}
     >
       <ButtonBack className="scroll-btn">
         <GrPrevious />
@@ -56,6 +60,7 @@ const WineCarousel = ({ items }) => {
 
 WineCarousel.propTypes = {
   items: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
 }
 
 export default WineCarousel
