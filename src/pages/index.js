@@ -1,13 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import { Link } from "gatsby"
-import CountryList from "../components/ContryList"
 
 import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
-import Carousel from "../components/Carousel"
+import WineCarousel from "../components/WineCarousel"
 
 const StyledWrapper = styled.div`
   margin-top: 2rem;
@@ -101,7 +99,7 @@ const IndexPage = () => {
   `)
 
   const {
-    allBestSellers: { nodes: bestSellers, totalCount },
+    allBestSellers: { nodes: bestSellers },
     allDiscounted: { nodes: discounted },
     imageSharp: { fluid },
   } = data
@@ -119,9 +117,9 @@ const IndexPage = () => {
           </section>
           <section className="offer">
             <h2>Our Bestselling Wines</h2>
-            <Carousel items={bestSellers} />
+            <WineCarousel items={bestSellers} />
             <h2>Check our Sale</h2>~
-            <Carousel items={discounted} />
+            <WineCarousel items={discounted} />
           </section>
         </StyledWrapper>
       </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const StyledOrderItem = styled.li`
@@ -16,11 +17,14 @@ const StyledOrderItem = styled.li`
 `
 
 const OrderItem = ({ item }) => {
-  const { name, price, count, thumbnail } = item
+  const {
+    data: { name, price, image },
+    count,
+  } = item
   const total = count * price
   return (
     <StyledOrderItem>
-      <img src={thumbnail} alt={name} />
+      <img src={image} alt={name} />
       <h5>{name}</h5>
       <button>-</button>
       <span>{count}</span>
@@ -30,6 +34,10 @@ const OrderItem = ({ item }) => {
       <span className="total">{total}</span>
     </StyledOrderItem>
   )
+}
+
+OrderItem.propTypes = {
+  item: PropTypes.object.isRequired,
 }
 
 export default OrderItem

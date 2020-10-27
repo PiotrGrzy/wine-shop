@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import StyledLink from "../styles/StyledLink"
 import CountryList from "./ContryList"
 import WineTypesList from "./WineTypesList"
 
 const StyledNav = styled.nav`
+  width: 100%;
   div {
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -24,11 +24,15 @@ const StyledNav = styled.nav`
 const Navbar = () => {
   return (
     <StyledNav>
-      <div className="container types">
-        <WineTypesList />
+      <div className="types">
+        <div className="container">
+          <WineTypesList />
+        </div>
       </div>
-      <div className="container countries">
-        <CountryList />
+      <div className="countries">
+        <div className="container">
+          <CountryList />
+        </div>
       </div>
     </StyledNav>
   )

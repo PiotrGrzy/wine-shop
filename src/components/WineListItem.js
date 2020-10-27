@@ -1,13 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { FiShoppingCart } from "react-icons/fi"
 import { Link } from "gatsby"
 import Rating from "./Rating"
 import Button from "./Button"
-import emptyBottle from "../images/empty_bottle.jpg"
+
 import BestsellerBadge from "./BestsellerBadge"
 import DiscountBadge from "./DiscountBadge"
+import { useCart } from "../context/CartContext/CartContextProvider"
+import { addItemToCart } from "../context/CartContext/cartActions"
 
 const StyledLink = styled(Link)`
   font-weight: 700;
@@ -58,8 +59,11 @@ const WineCardStyled = styled.li`
 `
 
 const WineListItem = ({ wine }) => {
-  const handleAddToCart = e => {
-    console.log("add to Cart!!")
+  const { dispatch } = useCart()
+
+  const handleAddToCart = () => {
+    const cartItem = { data: wine, count: 1 }
+    addItemToCart(dispatch, cartItem)
   }
 
   const {
@@ -77,7 +81,7 @@ const WineListItem = ({ wine }) => {
   return (
     <WineCardStyled>
       <div className="image-wrapper">
-        <img src={image} alt={name} onError={emptyBottle} />
+        <img src={image} alt={name} />
       </div>
       <div className="info-wrapper">
         <StyledLink to={`/wines/${id}`}>{name}</StyledLink>

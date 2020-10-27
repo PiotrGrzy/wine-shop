@@ -35,6 +35,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
+
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <StyledLayout>
         <main>{children}</main>

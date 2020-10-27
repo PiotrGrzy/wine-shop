@@ -1,4 +1,6 @@
 import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 import {
   CarouselProvider,
   Slider,
@@ -11,9 +13,22 @@ import { GrNext } from "react-icons/gr"
 import { GrPrevious } from "react-icons/gr"
 import WineListItem from "./WineListItem"
 
-const Carousel = ({ items }) => {
+const StyledCarousel = styled(CarouselProvider)`
+  height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  .scroll-btn {
+    font-size: 3rem;
+    background-color: rgba(200, 200, 200, 0.5);
+    color: white;
+    height: 100%;
+  }
+`
+
+const WineCarousel = ({ items }) => {
   return (
-    <CarouselProvider
+    <StyledCarousel
       naturalSlideWidth={300}
       naturalSlideHeight={400}
       totalSlides={30}
@@ -21,23 +36,26 @@ const Carousel = ({ items }) => {
       interval={3000}
       isPlaying={true}
       isIntrinsicHeight
-      className="carousel"
     >
-      <ButtonBack className="carousel__btn">
+      <ButtonBack className="scroll-btn">
         <GrPrevious />
       </ButtonBack>
       <Slider>
         {items.map((item, i) => (
-          <Slide index={i} kry={item.id}>
+          <Slide index={i} key={item.id}>
             <WineListItem wine={item} />
           </Slide>
         ))}
       </Slider>
-      <ButtonNext className="carousel__btn">
+      <ButtonNext className="scroll-btn">
         <GrNext />
       </ButtonNext>
-    </CarouselProvider>
+    </StyledCarousel>
   )
 }
 
-export default Carousel
+WineCarousel.propTypes = {
+  items: PropTypes.array.isRequired,
+}
+
+export default WineCarousel

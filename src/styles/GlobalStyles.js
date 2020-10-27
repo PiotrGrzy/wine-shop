@@ -67,24 +67,6 @@ fieldset {
 }
 
 
-.carousel {
-    height:40rem;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-
-}
-
-
-.carousel__btn {
-    font-size:3rem;
-    background-color:rgba(200,200,200, .5);
-    color:white;
-    height:100%;
-  
-}
-
-
 `
 
 export default GlobalStyles
