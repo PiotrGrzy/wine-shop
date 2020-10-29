@@ -10,6 +10,7 @@ const StyledDropdown = styled.div`
 `
 
 const StyledToggler = styled.button`
+  outline: none;
   display: block;
   font-size: 2rem;
   color: ${({ color }) => color};

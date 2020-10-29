@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { MdRemoveCircleOutline } from "react-icons/md"
+import { TiPlus, TiMinus } from "react-icons/ti"
 import {
   addItemToCart,
   decrementItem,
@@ -21,6 +22,9 @@ const StyledOrderItem = styled.li`
     width: 100%;
     object-fit: contain;
   }
+  span {
+    text-align: center;
+  }
 `
 
 const OrderItem = ({ item }) => {
@@ -31,18 +35,20 @@ const OrderItem = ({ item }) => {
     count,
   } = item
 
-  const total = count * price
+  const total = (count * price).toFixed(2, 10)
 
   return (
     <StyledOrderItem>
       <img src={image} alt={name} />
       <h5>{name}</h5>
-      <button onClick={() => decrementItem(dispatch, id)}>-</button>
+      <button onClick={() => decrementItem(dispatch, id)}>
+        <TiMinus />
+      </button>
       <span>{count}</span>
       <button
         onClick={() => addItemToCart(dispatch, { data: item.data, count: 1 })}
       >
-        +
+        <TiPlus />
       </button>
 
       <span>{price}</span>

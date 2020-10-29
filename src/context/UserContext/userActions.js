@@ -4,10 +4,12 @@ const userData = {
   id: "3232323k2ok",
   firstName: "Peter",
   lastName: "Kovalski",
+  email: "peter.kovalski@example.com",
   favorites: [],
   history: [],
   address: {
     country: "Poland",
+    city: "Gdańsk",
     street: "Myśliwska",
     home: "33",
     zipCode: "80-283",

@@ -31,7 +31,8 @@ const StyledTopNav = styled.nav`
   .cart-counter {
     position: absolute;
     font-size: 1.4rem;
-    top: 0.8rem;
+    font-weight: 700;
+    top: 0.7rem;
     right: 1rem;
     color: var(--wisteria);
   }
