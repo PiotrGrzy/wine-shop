@@ -2,7 +2,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import StyledLink from "../styles/StyledLink"
-import CountryLinkCarousel from "./CountryLinkCarousel"
 
 const query = graphql`
   {
@@ -17,18 +16,21 @@ const query = graphql`
 `
 
 const CountryLink = styled(StyledLink)`
-  font-size: 1.4rem;
-  margin: 0 0.5rem;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  text-align: center;
 `
 
 const CountryList = () => {
   const data = useStaticQuery(query)
   const uniqueCountries = [
     ...new Set(data.allWines.nodes.map(wine => wine.location.country)),
-  ].sort()
+  ]
+    .sort()
+    .filter(country => !!country)
 
   return (
-    <div>
+    <>
       {uniqueCountries.map(country => (
         <CountryLink
           color="var(--dark-purple)"
@@ -38,7 +40,7 @@ const CountryList = () => {
           {country}
         </CountryLink>
       ))}
-    </div>
+    </>
   )
 }
 

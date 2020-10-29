@@ -1,8 +1,16 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
 import StyledLink from "../styles/StyledLink"
 import NavDropdown from "./NavDropdown"
 import CountryList from "./ContryList"
+
+const StyledList = styled.ul`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
 const query = graphql`
   {
@@ -22,7 +30,7 @@ const WineTypesList = () => {
   ].sort()
 
   return (
-    <div>
+    <StyledList>
       {uniqueTypes.map(type => (
         <StyledLink color="var(--misty-rose)" key={type} to={`/wines/${type}`}>
           {type} Wines
@@ -31,7 +39,7 @@ const WineTypesList = () => {
       <NavDropdown>
         <CountryList />
       </NavDropdown>
-    </div>
+    </StyledList>
   )
 }
 

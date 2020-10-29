@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const StyledLink = styled(AniLink)`
+  display: block;
   font-size: 2rem;
   color: ${({ color }) => color};
   transition: color 0.2s;

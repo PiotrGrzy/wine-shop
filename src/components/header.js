@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 
 import styled from "styled-components"
-import Navbar from "./Navbar"
+import BottomNav from "./BottomNav"
 
 import TopNav from "./TopNav"
 
@@ -21,7 +21,7 @@ const Header = ({ siteTitle }) => {
     <>
       <StyledHeader>
         <TopNav siteTitle={siteTitle} />
-        <Navbar />
+        <BottomNav />
       </StyledHeader>
     </>
   )
