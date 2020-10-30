@@ -11,12 +11,23 @@ const StyledOrder = styled.div`
   background-color: rgba(255, 255, 255, 0.6);
   ol {
     padding: 2rem;
-    flex: 1;
+    flex: 5;
+  }
+  .total {
+    padding: 2rem;
+    background-color: var(--white);
+    text-align: right;
+    font-size: 2rem;
+    border: 1px solid var(--misty-rose);
   }
 `
 
 const Order = () => {
   const { cart } = useCart()
+
+  const total = cart.items.reduce((total, item) => {
+    return (total += item.count * item.data.price)
+  }, 0)
 
   return (
     <div className="container">
@@ -25,6 +36,7 @@ const Order = () => {
           {cart.items.map(item => (
             <OrderItem key={item.data.id} item={item} />
           ))}
+          <p className="total">Total with taxes: {total.toFixed(2, 10)} PLN</p>
         </ol>
         <OrderSummary />
       </StyledOrder>

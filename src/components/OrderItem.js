@@ -15,7 +15,7 @@ const StyledOrderItem = styled.li`
   grid-template-columns: 10rem 1fr repeat(6, 5rem);
   align-items: center;
   background-color: var(--white);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   border: 1px solid var(--misty-rose);
   img {
     height: 10rem;
@@ -50,9 +50,8 @@ const OrderItem = ({ item }) => {
       >
         <TiPlus />
       </button>
-
       <span>{price}</span>
-      <span className="total">{total}</span>
+      <span>{total}</span>
       <button onClick={() => removeItemFromCart(dispatch, id)}>
         <MdRemoveCircleOutline color="orange" />
       </button>

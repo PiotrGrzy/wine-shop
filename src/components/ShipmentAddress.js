@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const StyledAddress = styled.div`
   background-color: var(--white);
@@ -8,7 +9,8 @@ const StyledAddress = styled.div`
   grid-template-columns: 1fr 1.1fr;
   grid-template-rows: repeat(4, 1fr);
   gap: 1rem;
-  justify-items: center;
+  margin-bottom: 1rem;
+  justify-items: left;
   align-items: center;
   grid-template-areas:
     "title title"
@@ -18,6 +20,8 @@ const StyledAddress = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--dark-purple);
+  border: 2px solid var(--wisteria);
+  border-radius: 5px;
   span {
     font-weight: 400;
   }
@@ -49,7 +53,6 @@ const ShipmentAddress = ({ userData }) => {
   const {
     firstName,
     lastName,
-    phone,
     address: { country, street, home, zipCode, city },
   } = userData
   return (
@@ -77,6 +80,10 @@ const ShipmentAddress = ({ userData }) => {
       </div>
     </StyledAddress>
   )
+}
+
+ShipmentAddress.propTypes = {
+  userData: PropTypes.object.isRequired,
 }
 
 export default ShipmentAddress
