@@ -23,9 +23,9 @@ const WineCardStyled = styled.li`
   padding: 2rem;
   grid-template-columns: 75px 1fr;
   gap: 3rem;
-  border: 1px solid var(--misty-rose);
+  border: 1px solid var(--secondary-light);
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: var(--box-shadow);
   background-color: var(--white);
   .image-wrapper {
     img {
@@ -44,7 +44,7 @@ const WineCardStyled = styled.li`
     row-gap: 1rem;
     align-items: center;
     justify-items: right;
-    color: var(--dark-purple);
+    color: var(--primary);
   }
 
   .price {
@@ -84,7 +84,9 @@ const WineListItem = ({ wine }) => {
         <img src={image} alt={name} />
       </div>
       <div className="info-wrapper">
-        <StyledLink to={`/wines/${id}`}>{name}</StyledLink>
+        <StyledLink to={`/wines/${id}`} state={{ prevPath: location.pathname }}>
+          {name}
+        </StyledLink>
         <p className="location">{location.country}</p>
         <p className="location">{location.region}</p>
         <Rating rating={rating} />

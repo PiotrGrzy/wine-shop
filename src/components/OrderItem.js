@@ -16,7 +16,7 @@ const StyledOrderItem = styled.li`
   align-items: center;
   background-color: var(--white);
   font-size: 1.4rem;
-  border: 1px solid var(--misty-rose);
+  border: 1px solid var(--secondary-light);
   img {
     height: 10rem;
     width: 100%;

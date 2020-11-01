@@ -34,7 +34,7 @@ const StyledWrapper = styled.div`
     font-size: 3rem;
     text-align: center;
     margin: 4rem 0;
-    color: var(--dark-purple);
+    color: var(--primary);
   }
 `
 

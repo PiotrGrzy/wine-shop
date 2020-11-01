@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
     align-items: center;
   }
   p {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     vertical-align: center;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.6);
@@ -19,7 +19,7 @@ const StyledWrapper = styled.div`
 `
 
 const StyledButton = styled.button`
-  padding: 1rem;
+  padding: 0.5rem;
   border: none;
   display: flex;
   justify-content: center;
@@ -28,13 +28,13 @@ const StyledButton = styled.button`
 
   color: var(--white);
   background-color: ${props =>
-    props.disabled ? "lightgrey" : "var(--dark-purple)"};
+    props.disabled ? "lightgrey" : "var(--primary)"};
   cursor: ${props => (props.disabled ? "auto" : "pointer")};
   &:hover {
     background-color: ${props =>
-      props.disabled ? "lightgrey" : "var(--wisteria)"};
+      props.disabled ? "lightgrey" : "var(--secondary)"};
   }
-  font-size: 3rem;
+  font-size: 2rem;
   border-radius: 5px;
 `
 

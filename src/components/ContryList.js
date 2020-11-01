@@ -16,9 +16,10 @@ const query = graphql`
 `
 
 const CountryLink = styled(StyledLink)`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding: 0.5rem;
   text-align: center;
+  color: var(--secondary-light);
 `
 
 const CountryList = () => {
@@ -33,7 +34,7 @@ const CountryList = () => {
     <>
       {uniqueCountries.map(country => (
         <CountryLink
-          color="var(--dark-purple)"
+          color="var(--primary)"
           key={country}
           to={`/wines/${country.slice(0, -1)}`}
         >

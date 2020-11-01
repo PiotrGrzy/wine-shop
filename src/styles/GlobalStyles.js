@@ -5,10 +5,12 @@ const GlobalStyles = createGlobalStyle`
 :root {
     --white: #ffffffff;
     --black: #101010;
-    --dark-purple: #412234ff;
-    --dark-byzantium: #6d466bff;
-    --wisteria: #b49fccff;
-    --misty-rose: #ead7d7ff;
+    --primary: #412234ff;
+    --primary-light: #6d466bff;
+    --secondary: #b49fccff;
+    --secondary-light: #ead7d7ff;
+    --bg-backdrop-white:  rgba(255, 255, 255, 0.6);
+    --box-shadow:rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 html {
@@ -18,8 +20,8 @@ html {
     background-image:url(${bg});
    background-position:fixed;
 
-/* background-color: var(--misty-rose);
-background-image: linear-gradient(90deg, var(--misty-rose) 0%, var(--white) 100%); */
+/* background-color: var(--secondary-light);
+background-image: linear-gradient(90deg, var(--secondary-light) 0%, var(--white) 100%); */
 
 }
 *,

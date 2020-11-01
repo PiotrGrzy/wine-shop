@@ -19,8 +19,8 @@ const StyledAddress = styled.div`
     "home postal-code";
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--dark-purple);
-  border: 2px solid var(--wisteria);
+  color: var(--primary);
+  border: 2px solid var(--secondary);
   border-radius: 5px;
   span {
     font-weight: 400;

@@ -16,7 +16,7 @@ const StyledRadioButton = styled.label`
   font-size: 1.8rem;
   user-select: none;
   background-color: var(--white);
-  border: 2px solid ${props => (props.active ? "var(--wisteria)" : "#a0a0a0")};
+  border: 2px solid ${props => (props.active ? "var(--secondary)" : "#a0a0a0")};
   border-radius: 5px;
   input {
     position: absolute;
@@ -37,7 +37,7 @@ const StyledRadioButton = styled.label`
     background-color: #ccc;
   }
   input:checked ~ .checkmark {
-    background-color: var(--wisteria);
+    background-color: var(--secondary);
   }
   .checkmark:after {
     content: "";

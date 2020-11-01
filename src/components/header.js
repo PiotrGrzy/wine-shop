@@ -9,10 +9,10 @@ import TopNav from "./TopNav"
 
 const StyledHeader = styled.header`
   width: 100%;
-  background-color: var(--dark-byzantium);
+  background-color: var(--primary-light);
   h1 {
     font-size: 2.4rem;
-    color: var(--misty-rose);
+    color: var(--secondary-light);
   }
 `
 

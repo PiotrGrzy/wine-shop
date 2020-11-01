@@ -25,14 +25,26 @@ const query = graphql`
 
 const WineTypesList = () => {
   const data = useStaticQuery(query)
-  const uniqueTypes = [
-    ...new Set(data.allWines.nodes.map(wine => wine.type)),
-  ].sort()
+  const uniqueTypes = [...new Set(data.allWines.nodes.map(wine => wine.type))]
+    .sort()
+    .map(type => {
+      if (type === "reds") {
+        return "red"
+      } else if (type === "whites") {
+        return "white"
+      } else {
+        return type
+      }
+    })
 
   return (
     <StyledList>
       {uniqueTypes.map(type => (
-        <StyledLink color="var(--misty-rose)" key={type} to={`/wines/${type}`}>
+        <StyledLink
+          color="var(--secondary-light)"
+          key={type}
+          to={`/wines/${type}`}
+        >
           {type} Wines
         </StyledLink>
       ))}

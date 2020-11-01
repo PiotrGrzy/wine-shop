@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
+import PropTypes from "prop-types"
+import { navigate } from "@reach/router"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import WineCard from "../styles/WineCard"
@@ -6,6 +8,8 @@ import StyledLink from "../styles/StyledLink"
 import Rating from "../components/Rating"
 import DiscountBadge from "../components/DiscountBadge"
 import BestsellerBadge from "../components/BestsellerBadge"
+import { useCart } from "../context/CartContext/CartContextProvider"
+import { addItemToCart } from "../context/CartContext/cartActions"
 
 const Button = styled.button`
   width: 100%;
@@ -14,7 +18,7 @@ const Button = styled.button`
   font-weight: 700;
   transition: background-color 0.2s;
   &:hover {
-    background-color: var(--wisteria);
+    background-color: var(--secondary);
   }
 `
 
@@ -28,15 +32,15 @@ const DecButton = styled(Button)`
 
 const Input = styled.input`
   border: none;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  width: 8rem;
+  width: 6rem;
 `
 
 const AddButton = styled(Button)`
   grid-area: 8/1/-1/-1;
-  background-color: var(--dark-purple);
+  background-color: var(--primary);
   color: var(--white);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
@@ -44,6 +48,9 @@ const AddButton = styled(Button)`
 
 const Wine = ({ data }) => {
   console.log(data)
+  const [count, setCount] = useState(1)
+  const { dispatch } = useCart()
+
   const {
     wines: {
       name,
@@ -58,6 +65,27 @@ const Wine = ({ data }) => {
       isBestSeller,
     },
   } = data
+
+  const handleChange = e => {
+    const value = parseInt(e.target.value)
+    if (value) {
+      setCount(value)
+    }
+  }
+
+  const handleAddToCart = () => {
+    const cartItem = { data: data.wines, count }
+    addItemToCart(dispatch, cartItem)
+    setTimeout(() => navigate(-1), 2000)
+  }
+
+  const incrementCount = () => {
+    setCount(count => count + 1)
+  }
+  const decrementCount = () => {
+    if (count <= 1) return
+    setCount(count => count - 1)
+  }
 
   return (
     <div className="container">
@@ -78,12 +106,12 @@ const Wine = ({ data }) => {
           <Rating rating={rating} className="rating" />
         </div>
         <p className="price">{price} zł</p>
-        <IncButton>&#43;</IncButton>
+        <IncButton onClick={incrementCount}>&#43;</IncButton>
         <div className="input">
-          <Input type="text" value={12} />
+          <Input type="text" value={count} onInput={handleChange} />
         </div>
-        <DecButton>&#x2212;</DecButton>
-        <AddButton> &#43; Add to Cart</AddButton>
+        <DecButton onClick={decrementCount}>&#x2212;</DecButton>
+        <AddButton onClick={handleAddToCart}> &#43; Add to Cart</AddButton>
 
         {isDiscounted && <DiscountBadge discount={discountPercentage} />}
         {isBestSeller && <BestsellerBadge />}
@@ -115,5 +143,9 @@ export const query = graphql`
     }
   }
 `
+
+Wine.propTypes = {
+  data: PropTypes.object.isRequired,
+}
 
 export default Wine

@@ -1,11 +1,12 @@
 import path from "path"
 import fetch from "isomorphic-fetch"
 import customizeWinaData from "./src/utils/customizeWineData"
+import normalizeWineType from "./src/utils/normalizeWineType"
 
 const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
 
 async function getResultsFromAPI() {
-  // aggregates multiple api endpoints into one allWines collection
+  // agregates multiple api endpoints into one allWines collection
   const promises = WINE_TYPES.map(async type => {
     const baseURL = `https://sampleapis.com/wines/api/${type}`
     const res = await fetch(baseURL)
@@ -75,7 +76,7 @@ async function createTypeWinesPages({ actions }) {
 
   WINE_TYPES.forEach(type => {
     createPage({
-      path: `/wines/${type}`,
+      path: `/wines/${normalizeWineType(type)}`,
       component: winesTemplate,
       context: {
         slug: type,

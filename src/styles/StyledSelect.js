@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const StyledSelect = styled.select`
-  padding: 1rem;
+  padding: 0.5rem;
   border: none;
   display: flex;
   justify-content: center;

@@ -18,7 +18,7 @@ const StyledOrder = styled.div`
     background-color: var(--white);
     text-align: right;
     font-size: 2rem;
-    border: 1px solid var(--misty-rose);
+    border: 1px solid var(--secondary-light);
   }
 `
 

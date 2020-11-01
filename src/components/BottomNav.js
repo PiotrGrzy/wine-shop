@@ -4,7 +4,7 @@ import CountryList from "./ContryList"
 import WineTypesList from "./WineTypesList"
 
 const StyledNav = styled.nav`
-  background-color: var(--dark-purple);
+  background-color: var(--primary);
 `
 
 const BottomNav = () => {

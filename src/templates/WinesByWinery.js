@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import PropTypes from "prop-types"
 import WineList from "../components/WineList"
 
 const WinesByWinery = ({ data, pageContext }) => {
@@ -10,7 +11,11 @@ const WinesByWinery = ({ data, pageContext }) => {
   if (!wines) return <p>Wines not found</p>
   return (
     <div className="container">
-      <WineList wines={wines} total={totalCount} title={pageContext.slug} />
+      <WineList
+        wines={wines}
+        total={totalCount}
+        title={`${pageContext.slug} winery`}
+      />
     </div>
   )
 }
@@ -41,5 +46,10 @@ export const query = graphql`
     }
   }
 `
+
+WinesByWinery.propTypes = {
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
+}
 
 export default WinesByWinery

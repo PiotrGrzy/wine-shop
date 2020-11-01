@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import { sortWines } from "../utils/sorting"
 import Pagination from "./Pagination"
 import WineListItem from "./WineListItem"
@@ -6,24 +7,41 @@ import WineListStyles from "../styles/WineListStyles"
 import StyledSelect from "../styles/StyledSelect"
 import { NAME_ASC, NAME_DES, PRICE_ASC, PRICE_DES } from "../consts/sorting"
 import styled from "styled-components"
+import normalizeWineType from "../utils/normalizeWineType"
 
 const StyledSortingWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 1rem;
   input {
     border: none;
     outline: none;
     font-size: 1.6rem;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-left: 1rem;
   }
   label {
     background-color: rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
-    font-size: 2rem;
-    padding: 1rem;
+    font-size: 1.6rem;
+    padding: 0.5rem;
+  }
+`
+const StyledTitle = styled.div`
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--bg-backdrop-white);
+  text-transform: capitalize;
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: block;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: 1.8rem;
   }
 `
 
@@ -34,7 +52,7 @@ const WineList = ({ wines, total, title }) => {
   const [currentPage, setCurrentPage] = useState(0)
 
   const filteredWines = wines.filter(({ name }) => {
-    return !searchQuery || name.includes(searchQuery)
+    return !searchQuery || name.toLowerCase().includes(searchQuery)
   })
 
   const totalPages = Math.ceil(filteredWines.length / winesPerPage)
@@ -48,7 +66,6 @@ const WineList = ({ wines, total, title }) => {
 
   return (
     <div>
-      <p>total in our stock: {total}</p>
       <StyledSortingWrapper>
         <label htmlFor="search">
           Search:
@@ -56,7 +73,7 @@ const WineList = ({ wines, total, title }) => {
             id="search"
             type="text"
             value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value.toLowerCase())}
             placeholder="Wine name.."
           />
         </label>
@@ -95,6 +112,11 @@ const WineList = ({ wines, total, title }) => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+
+      <StyledTitle>
+        <h2>{normalizeWineType(title)} wines</h2>
+        <p>{total} wines in this category</p>
+      </StyledTitle>
       <WineListStyles>
         {winesWithPagination.map(wine => {
           return <WineListItem key={wine.id} wine={wine} />
@@ -108,6 +130,12 @@ const WineList = ({ wines, total, title }) => {
       />
     </div>
   )
+}
+
+WineList.propTypes = {
+  wines: PropTypes.array.isRequired,
+  total: PropTypes.number,
+  title: PropTypes.string,
 }
 
 export default WineList

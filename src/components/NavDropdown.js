@@ -5,7 +5,7 @@ import { BiCaretDown, BiCaretUp } from "react-icons/bi"
 
 const StyledDropdown = styled.div`
   position: relative;
-  color: var(--misty-rose);
+  color: var(--secondary-light);
 `
 
 const StyledToggler = styled.button`
@@ -37,14 +37,13 @@ const Links = styled.div`
   width: min(80rem, 90vw);
   padding: 1rem;
 
-  background-color: var(--misty-rose);
+  background-color: var(--primary-light);
 `
 
 const NavDropdown = ({ children }) => {
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {
-    console.log("hover!")
     setOpen(!open)
   }
   return (

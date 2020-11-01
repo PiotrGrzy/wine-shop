@@ -10,7 +10,15 @@ const RadioGroup = ({ state, setState, title, options }) => {
 
   return (
     <div>
-      <h2 style={{ fontSize: "2rem" }}>{title}</h2>
+      <h2
+        style={{
+          fontSize: "2rem",
+          display: "block",
+          color: "var(--primary)",
+        }}
+      >
+        {title}
+      </h2>
       {options.map(method => (
         <RadioInput
           key={method.value}

@@ -3,11 +3,12 @@ import {
   REMOVE_ITEM,
   CLEAR_CART,
   DECREMENT_ITEM,
+  SEND_NEW_ORDER,
 } from "./cartActionTypes"
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case ADD_ITEM:
+    case ADD_ITEM: {
       const itemIndex = state.items.findIndex(
         item => item.data.id === action.payload.data.id
       )
@@ -23,6 +24,7 @@ const cartReducer = (state, action) => {
 
         return { ...state, items: newItems }
       }
+    }
     case DECREMENT_ITEM: {
       const item = state.items.find(item => item.data.id === action.payload)
       if (item.count - 1 < 1)

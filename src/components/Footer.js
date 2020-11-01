@@ -5,7 +5,7 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-around;
   padding: 5px;
-  background-color: var(--dark-byzantium);
+  background-color: var(--primary-light);
 `
 
 const Footer = () => {

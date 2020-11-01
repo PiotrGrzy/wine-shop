@@ -11,7 +11,7 @@ import { RiShoppingCartLine, RiShoppingCart2Fill } from "react-icons/ri"
 import Button from "./Button"
 
 const StyledIcon = styled(GiWineBottle)`
-  color: var(--misty-rose);
+  color: var(--secondary-light);
 `
 
 const StyledTopNav = styled.nav`
@@ -21,7 +21,7 @@ const StyledTopNav = styled.nav`
   align-items: center;
   h1 {
     font-size: 2.8rem;
-    color: var(--misty-rose);
+    color: var(--secondary-light);
   }
   .cart {
     position: relative;
@@ -34,7 +34,7 @@ const StyledTopNav = styled.nav`
     font-weight: 700;
     top: 0.7rem;
     right: 1rem;
-    color: var(--wisteria);
+    color: var(--secondary);
   }
   div {
     display: flex;

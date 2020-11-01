@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   width: 14rem;
   height: 4rem;
   margin: 1rem 0;
-  border: 2px solid var(--dark-purple);
+  border: 2px solid var(--primary);
   font-size: 1.6rem;
   cursor: pointer;
   span {
@@ -18,10 +18,10 @@ const StyledButton = styled.button`
     color: transparent;
     background-image: linear-gradient(
       90deg,
-      var(--wisteria) 0%,
-      var(--wisteria) 50%,
-      var(--dark-purple) 50%,
-      var(--dark-purple) 100%
+      var(--white) 0%,
+      var(--white) 50%,
+      var(--primary) 50%,
+      var(--primary) 100%
     );
     background-repeat: repeat;
     background-size: 200%;
@@ -38,7 +38,7 @@ const StyledButton = styled.button`
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--dark-purple);
+    background: var(--primary);
     transform-origin: 100% 0;
     transform: scale3d(0, 1, 1);
     transition: transform 300ms;
