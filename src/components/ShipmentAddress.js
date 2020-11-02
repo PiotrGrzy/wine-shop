@@ -17,7 +17,7 @@ const StyledAddress = styled.div`
     "name country"
     "city street"
     "home postal-code";
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--primary);
   border: 2px solid var(--secondary);
@@ -27,7 +27,7 @@ const StyledAddress = styled.div`
   }
   .title {
     grid-area: title;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   .name {
     grid-area: name;

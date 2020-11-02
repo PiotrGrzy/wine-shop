@@ -1,4 +1,9 @@
-import { NAME_ASC, NAME_DES, PRICE_ASC, PRICE_DES } from "../consts/sorting"
+import {
+  NAME_ASC,
+  NAME_DES,
+  PRICE_ASC,
+  PRICE_DES,
+} from "../consts/sortingOptions"
 
 export function sortAsc(arr, field) {
   return arr.sort(function (a, b) {

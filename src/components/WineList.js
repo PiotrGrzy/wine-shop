@@ -1,11 +1,16 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { sortWines } from "../utils/sorting"
+import { sortWines } from "../utils/sortWines"
 import Pagination from "./Pagination"
 import WineListItem from "./WineListItem"
 import WineListStyles from "../styles/WineListStyles"
 import StyledSelect from "../styles/StyledSelect"
-import { NAME_ASC, NAME_DES, PRICE_ASC, PRICE_DES } from "../consts/sorting"
+import {
+  NAME_ASC,
+  NAME_DES,
+  PRICE_ASC,
+  PRICE_DES,
+} from "../consts/sortingOptions"
 import styled from "styled-components"
 import normalizeWineType from "../utils/normalizeWineType"
 

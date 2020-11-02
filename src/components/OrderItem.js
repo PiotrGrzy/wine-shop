@@ -26,6 +26,13 @@ const StyledOrderItem = styled.li`
     text-align: center;
   }
 `
+const StyledButton = styled.button`
+  outline: none;
+  &:focus,
+  &:active {
+    border: 1px solid var(--primary-light);
+  }
+`
 
 const OrderItem = ({ item }) => {
   const { dispatch } = useCart()
@@ -41,20 +48,20 @@ const OrderItem = ({ item }) => {
     <StyledOrderItem>
       <img src={image} alt={name} />
       <h5>{name}</h5>
-      <button onClick={() => decrementItem(dispatch, id)}>
+      <StyledButton onClick={() => decrementItem(dispatch, id)}>
         <TiMinus />
-      </button>
+      </StyledButton>
       <span>{count}</span>
-      <button
+      <StyledButton
         onClick={() => addItemToCart(dispatch, { data: item.data, count: 1 })}
       >
         <TiPlus />
-      </button>
+      </StyledButton>
       <span>{price}</span>
       <span>{total}</span>
-      <button onClick={() => removeItemFromCart(dispatch, id)}>
+      <StyledButton onClick={() => removeItemFromCart(dispatch, id)}>
         <MdRemoveCircleOutline color="orange" />
-      </button>
+      </StyledButton>
     </StyledOrderItem>
   )
 }

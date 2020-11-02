@@ -1,7 +1,7 @@
 import React from "react"
 
 import { FaDhl } from "react-icons/fa"
-import { BsPersonSquare } from "react-icons/Bs"
+import { BsPersonSquare } from "react-icons/bs"
 import InPostIcon from "../svgs/inpost-logo.svg"
 import PocztaPolskaIcon from "../svgs/poczta-polska.svg"
 

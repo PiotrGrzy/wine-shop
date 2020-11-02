@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useCart } from "../context/CartContext/CartContextProvider"
 import { useUser } from "../context/UserContext/UserContextProvider"
-import { signInUser, signOutUser } from "../context/UserContext/userActions"
+import { signOutUser } from "../context/UserContext/userActions"
 import { ImUser } from "react-icons/im"
 import { GiWineBottle } from "react-icons/gi"
 import { RiShoppingCartLine, RiShoppingCart2Fill } from "react-icons/ri"
@@ -73,8 +73,8 @@ const TopNav = ({ siteTitle }) => {
           </div>
         ) : (
           <div>
-            <Button onClick={() => signInUser(dispatch)}>Sign In</Button>
-            <Button onClick={() => signInUser(dispatch)}>Register</Button>
+            <Link to="/sign-in">Sign In</Link>|
+            <Link to="/sign-up">Register</Link>
           </div>
         )}
       </div>
