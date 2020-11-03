@@ -8,7 +8,6 @@ import { signOutUser } from "../context/UserContext/userActions"
 import { ImUser } from "react-icons/im"
 import { GiWineBottle } from "react-icons/gi"
 import { RiShoppingCartLine, RiShoppingCart2Fill } from "react-icons/ri"
-import Button from "./Button"
 
 const StyledIcon = styled(GiWineBottle)`
   color: var(--secondary-light);
@@ -19,9 +18,11 @@ const StyledTopNav = styled.nav`
   grid-template-columns: auto 1fr auto auto;
   gap: 2rem;
   align-items: center;
+  font-size: 1.6rem;
+  color: var(--secondary-light);
+  padding: 1rem;
   h1 {
     font-size: 2.8rem;
-    color: var(--secondary-light);
   }
   .cart {
     position: relative;
@@ -34,12 +35,15 @@ const StyledTopNav = styled.nav`
     font-weight: 700;
     top: 0.7rem;
     right: 1rem;
-    color: var(--secondary);
+    color: var(--primary);
   }
   div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  p {
+    margin: 0 2rem;
   }
 `
 
@@ -69,7 +73,7 @@ const TopNav = ({ siteTitle }) => {
           <div>
             <ImUser />
             <p>Welcome {user.userData.firstName}!</p>
-            <Button onClick={() => signOutUser(dispatch)}>Sign Out</Button>
+            <button onClick={() => signOutUser(dispatch)}>Sign Out</button>
           </div>
         ) : (
           <div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import OrderItem from "../components/OrderItem"
 import OrderSummary from "../components/OrderSummary"
 import styled from "styled-components"
@@ -7,13 +7,17 @@ import { useCart } from "../context/CartContext/CartContextProvider"
 const StyledOrder = styled.div`
   display: flex;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   background-color: rgba(255, 255, 255, 0.6);
+
   ol {
-    padding: 2rem;
     flex: 5;
+    margin-right: 2rem;
+    box-shadow: var(--box-shadow);
+    background-color: var(--white);
   }
   .total {
+    margin-top: 1rem;
     padding: 2rem;
     background-color: var(--white);
     text-align: right;

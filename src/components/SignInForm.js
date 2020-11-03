@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import { navigate } from "@reach/router"
 import Form from "./Form"
 import Input from "./InputForm"
 import Button from "./Button"
@@ -10,13 +10,18 @@ import { signInUser } from "../context/UserContext/userActions"
 const SignInForm = () => {
   const { dispatch } = useUser()
 
+  const isWindow = window !== undefined
+
   const onSubmit = values => {
     console.log(values)
     signInUser(dispatch)
+    if (isWindow && window.location.pathname !== "/order") {
+      navigate(-1)
+    }
   }
 
   return (
-    <div>
+    <>
       <Form onSubmit={onSubmit}>
         <Input
           type="email"
@@ -39,9 +44,9 @@ const SignInForm = () => {
           label="Password"
         />
         <Button type="submit">Sign In</Button>
+        <Link to="/sign-up">Dont have an account? Register here</Link>
       </Form>
-      <Link to="/sign-up">Dont have an account? Register here</Link>
-    </div>
+    </>
   )
 }
 

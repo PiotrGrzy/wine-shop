@@ -14,6 +14,7 @@ const StyledSummary = styled.div`
   flex: 4;
   padding: 2rem;
   background-color: var(--white);
+  box-shadow: var(--box-shadow);
   h5 {
     font-size: 3rem;
   }

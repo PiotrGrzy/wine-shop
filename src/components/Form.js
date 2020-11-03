@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import { useForm } from "react-hook-form"
-import StyledForm from "../styles/StyledForm"
+import StyledForm from "styles/StyledForm"
 
 const Form = ({ children, onSubmit, grid = false }) => {
   const methods = useForm({ mode: "onBlur" })

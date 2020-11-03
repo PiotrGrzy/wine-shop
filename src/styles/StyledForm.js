@@ -12,12 +12,11 @@ const StyledForm = styled.form`
   padding: 2rem;
   align-items: center;
   justify-content: center;
-  width: 95%;
   max-width: 1000px;
-  margin: 2rem auto;
-  box-shadow: var(--box-shadow);
-  background-color: var(--bg-backdrop-white);
+  background-color: var(--white);
   font-size: 1.4rem;
+  box-shadow: var(--box-shadow);
+  border: radius;
 
   /* background: -webkit-linear-gradient(
     to right,
@@ -40,17 +39,37 @@ const StyledForm = styled.form`
 
   .validation-error {
     color: #961818;
+    margin-top: 0.5rem;
   }
 
   label {
     font-weight: 700;
-    /* color: var(--white); */
+    color: var(--primary);
     display: block;
     margin-bottom: 0.5rem;
   }
   input {
+    outline: none;
     padding: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    border: 2px solid #a0a0a0;
+    border-radius: 5px;
+  }
+  input:active,
+  input:focus {
+    border: 2px solid var(--secondary);
+  }
+
+  .form-btn,
+  .form-link {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+  .form-link {
+    grid-row: 7/8;
+  }
+  .form-btn {
+    grid-row: 6/7;
   }
 `
 export default StyledForm

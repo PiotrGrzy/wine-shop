@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
+import { navigate } from "@reach/router"
 import Button from "./Button"
 import Form from "./Form"
 import Input from "./InputForm"
-import { signUpUser } from "../context/UserContext/userActions"
-import { useUser } from "../context/UserContext/UserContextProvider"
+import { signUpUser } from "userContext/userActions"
+import { useUser } from "userContext/UserContextProvider"
 
 const SignUpForm = () => {
   const { dispatch } = useUser()
@@ -12,6 +13,7 @@ const SignUpForm = () => {
   const onSubmit = values => {
     console.log(values)
     signUpUser(dispatch)
+    navigate(-1)
   }
 
   return (
@@ -103,9 +105,13 @@ const SignUpForm = () => {
           label="Phone number"
         />
 
-        <Button type="submit">Sign In</Button>
+        <Button className="form-btn" type="submit">
+          Register
+        </Button>
+        <Link className="form-link" to="/sign-in">
+          Already got an account? Sign in here
+        </Link>
       </Form>
-      <Link to="/sign-in">Already got an account? Sign in here</Link>
     </div>
   )
 }
