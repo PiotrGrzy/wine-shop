@@ -1,8 +1,9 @@
 import React from "react"
-import OrderItem from "../components/OrderItem"
-import OrderSummary from "../components/OrderSummary"
+import OrderItem from "components/OrderItem"
+import OrderSummary from "components/OrderSummary"
 import styled from "styled-components"
-import { useCart } from "../context/CartContext/CartContextProvider"
+import { useCart } from "cartContext/CartContextProvider"
+import SEO from "components/SEO"
 
 const StyledOrder = styled.div`
   display: flex;
@@ -34,17 +35,22 @@ const Order = () => {
   }, 0)
 
   return (
-    <div className="container">
-      <StyledOrder>
-        <ol>
-          {cart.items.map(item => (
-            <OrderItem key={item.data.id} item={item} />
-          ))}
-          <p className="total">Total with taxes: {total.toFixed(2, 10)} PLN</p>
-        </ol>
-        <OrderSummary />
-      </StyledOrder>
-    </div>
+    <>
+      <SEO title="Order Details" />
+      <div className="container">
+        <StyledOrder>
+          <ol>
+            {cart.items.map(item => (
+              <OrderItem key={item.data.id} item={item} />
+            ))}
+            <p className="total">
+              Total with taxes: {total.toFixed(2, 10)} PLN
+            </p>
+          </ol>
+          <OrderSummary />
+        </StyledOrder>
+      </div>
+    </>
   )
 }
 

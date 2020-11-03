@@ -1,11 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-
 import { useStaticQuery, graphql } from "gatsby"
-
-import SEO from "../components/seo"
-import WineCarousel from "../components/WineCarousel"
+import SEO from "components/SEO"
+import Carousel from "components/Carousel"
 
 const StyledWrapper = styled.div`
   margin-top: 2rem;
@@ -118,9 +116,9 @@ const IndexPage = () => {
           </section>
           <section className="offer">
             <h2>Our Bestselling Wines</h2>
-            <WineCarousel items={bestSellers} total={bestSellersTotal} />
+            <Carousel items={bestSellers} total={bestSellersTotal} />
             <h2>Check our Sale</h2>~
-            <WineCarousel items={discounted} total={discountedTotal} />
+            <Carousel items={discounted} total={discountedTotal} />
           </section>
         </StyledWrapper>
       </div>
