@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import Badge from "../styles/Badge"
 
@@ -23,6 +24,10 @@ const BestsellerBadge = ({ small }) => {
       <p>Bestseller</p>
     </StyledBestSellerBadge>
   )
+}
+
+BestsellerBadge.propTypes = {
+  small: PropTypes.bool,
 }
 
 export default BestsellerBadge

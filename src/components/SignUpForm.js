@@ -1,10 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 import Button from "./Button"
 import Form from "./Form"
 import Input from "./InputForm"
-
+import { signUpUser } from "../context/UserContext/userActions"
 import { useUser } from "../context/UserContext/UserContextProvider"
 
 const SignUpForm = () => {
@@ -12,7 +11,7 @@ const SignUpForm = () => {
 
   const onSubmit = values => {
     console.log(values)
-    signInUser(dispatch)
+    signUpUser(dispatch)
   }
 
   return (

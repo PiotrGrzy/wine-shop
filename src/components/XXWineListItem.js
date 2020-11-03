@@ -84,9 +84,7 @@ const WineListItem = ({ wine }) => {
         <img src={image} alt={name} />
       </div>
       <div className="info-wrapper">
-        <StyledLink to={`/wines/${id}`} state={{ prevPath: location.pathname }}>
-          {name}
-        </StyledLink>
+        <StyledLink to={`/wines/${id}`}>{name}</StyledLink>
         <p className="location">{location.country}</p>
         <p className="location">{location.region}</p>
         <Rating rating={rating} />

@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import CountryList from "./ContryList"
 import WineTypesList from "./WineTypesList"
 
 const StyledNav = styled.nav`

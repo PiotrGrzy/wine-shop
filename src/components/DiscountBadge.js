@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import Badge from "../styles/Badge"
 
@@ -21,6 +22,11 @@ const DiscountBadge = ({ discount, small }) => {
       <p>- {discount} %</p>
     </StyledBadge>
   )
+}
+
+DiscountBadge.propTypes = {
+  discount: PropTypes.number.isRequired,
+  small: PropTypes.bool,
 }
 
 export default DiscountBadge

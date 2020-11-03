@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+const path = require("path")
+
 module.exports = {
   siteMetadata: {
     title: `Delicious Wines`,
@@ -15,7 +17,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
           include: /svgs/,
@@ -55,6 +57,17 @@ module.exports = {
             subsets: [`latin`],
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        components: path.join(__dirname, `src/components`),
+        styles: path.join(__dirname, `src/styles`),
+        userContext: path.join(__dirname, `src/context/UserContext`),
+        cartContext: path.join(__dirname, `src/context/CartContext`),
+        utils: path.join(__dirname, `src/utils`),
+        consts: path.join(__dirname, `src/consts`),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,13 +1,10 @@
 import React from "react"
+import PropTypes from "prop-types"
+
 import { useForm } from "react-hook-form"
 import StyledForm from "../styles/StyledForm"
 
-export default function Form({
-  defaultValues,
-  children,
-  onSubmit,
-  grid = false,
-}) {
+const Form = ({ children, onSubmit, grid = false }) => {
   const methods = useForm({ mode: "onBlur" })
   const { handleSubmit, errors } = methods
 
@@ -28,3 +25,11 @@ export default function Form({
     </StyledForm>
   )
 }
+
+Form.propTypes = {
+  children: PropTypes.node,
+  onSubmit: PropTypes.func.isRequired,
+  grid: PropTypes.bool,
+}
+
+export default Form

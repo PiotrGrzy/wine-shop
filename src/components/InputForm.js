@@ -1,13 +1,7 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-export default function InputForm({
-  register,
-  name,
-  errors,
-  validation,
-  label,
-  ...rest
-}) {
+const InputForm = ({ register, name, errors, validation, label, ...rest }) => {
   return (
     <div className="input-container">
       <label htmlFor={name}>{label}</label>
@@ -18,3 +12,13 @@ export default function InputForm({
     </div>
   )
 }
+
+InputForm.propTypes = {
+  register: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  errors: PropTypes.object,
+  validation: PropTypes.object,
+  label: PropTypes.string.isRequired,
+}
+
+export default InputForm

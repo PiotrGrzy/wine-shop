@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_OUT } from "./userActionTypes"
+import { SIGN_IN, SIGN_OUT, SIGN_UP } from "./userActionTypes"
 
 const userData = {
   id: "3232323k2ok",
@@ -20,6 +20,10 @@ const userData = {
 
 export const signInUser = dispatch => {
   dispatch({ type: SIGN_IN, payload: userData })
+}
+
+export const signUpUser = dispatch => {
+  dispatch({ type: SIGN_UP, payload: userData })
 }
 
 export const signOutUser = dispatch => {

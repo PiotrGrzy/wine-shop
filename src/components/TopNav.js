@@ -82,4 +82,8 @@ const TopNav = ({ siteTitle }) => {
   )
 }
 
+TopNav.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
 export default TopNav
