@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
   margin: 1rem 0;
   border: 2px solid var(--primary);
   font-size: 1.6rem;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? "none" : "pointer")};
   span {
     position: relative;
     color: transparent;
@@ -49,6 +49,27 @@ export const StyledButton = styled.button`
     &::before {
       transform-origin: 0 0;
       transform: scale3d(1, 1, 1);
+    }
+  }
+  .spinner:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    border-top-color: #07d;
+    animation: spinner 0.6s linear infinite;
+  }
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
     }
   }
 `

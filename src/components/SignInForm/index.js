@@ -5,18 +5,23 @@ import Form from "components/Form"
 import Input from "components/Input"
 import Button from "components/Button"
 import { useUser } from "userContext/UserContextProvider"
-import { signInUser } from "userContext/userActions"
+import { signInUser, setLoading } from "userContext/userActions"
 
 const SignInForm = () => {
-  const { dispatch } = useUser()
+  const { dispatch, user } = useUser()
 
   const isWindow = window !== undefined
 
   const onSubmit = values => {
+    setLoading(dispatch)
     signInUser(dispatch, values)
-    if (isWindow && window.location.pathname !== "/order") {
-      navigate(-1)
-    }
+    // if (
+    //   isWindow &&
+    //   window.location.pathname !== "/order" &&
+    //   !user.error?.login
+    // ) {
+    //   navigate(-1)
+    // }
   }
 
   return (
@@ -42,7 +47,14 @@ const SignInForm = () => {
           }}
           label="Password"
         />
-        <Button type="submit">Sign In</Button>
+        <Button type="submit" loading={user.loading}>
+          Sign In
+        </Button>
+        {user.error?.login ? (
+          <p className="validation-error">{user.error.login}</p>
+        ) : (
+          <p></p>
+        )}
         <Link to="/sign-up">Dont have an account? Register here</Link>
       </Form>
     </>

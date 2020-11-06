@@ -5,6 +5,8 @@ import userReducer from "./userReducer"
 const UserContext = createContext()
 
 const initialState = {
+  loading: false,
+  error: null,
   isSignedIn: false,
   userData: null,
 }

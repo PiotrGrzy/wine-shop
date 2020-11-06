@@ -1,7 +1,12 @@
-/* eslint-disable no-undef */
-import axios from "axios"
+import { api } from "../../api"
 
-import { SIGN_IN, SIGN_OUT, SIGN_UP } from "./userActionTypes"
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  SIGN_UP,
+  SIGN_IN_FAIL,
+  SET_LOADING,
+} from "./userActionTypes"
 
 // const userData = {
 //   id: "3232323k2ok",
@@ -21,19 +26,26 @@ import { SIGN_IN, SIGN_OUT, SIGN_UP } from "./userActionTypes"
 //   registerDate: "2020-10-26",
 // }
 
-export const signInUser = async (dispatch, formData) => {
-  const options = {
-    method: "post",
-    url: `${process.env.GATSBY_API_URL}/user/auth/login`,
-    data: formData,
-    withCredentials: true,
-  }
+export const setLoading = dispatch => {
+  dispatch({ type: SET_LOADING })
+}
 
+export const signInUser = async (dispatch, formData) => {
   try {
-    const response = await axios(options)
+    const response = await api.post("/user/login", formData)
     dispatch({ type: SIGN_IN, payload: response.data.user })
   } catch (err) {
-    console.log(err)
+    if (err.response) {
+      dispatch({
+        type: SIGN_IN_FAIL,
+        payload: err.response.data.msg,
+      })
+    } else {
+      dispatch({
+        type: SIGN_IN_FAIL,
+        payload: "Server error, pls try again",
+      })
+    }
   }
 }
 
@@ -61,15 +73,8 @@ export const signUpUser = async (dispatch, formData) => {
     address: { country, city, street, home, zipCode },
   }
 
-  const options = {
-    method: "post",
-    url: `${process.env.GATSBY_API_URL}/user/auth/register`,
-    data: userData,
-    withCredentials: true,
-  }
-
   try {
-    const response = await axios(options)
+    const response = await api.post("/user/register", userData)
     dispatch({ type: SIGN_UP, payload: response.data.user })
   } catch (err) {
     console.log(err)

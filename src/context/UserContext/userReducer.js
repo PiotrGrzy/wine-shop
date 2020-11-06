@@ -1,12 +1,32 @@
-import { SIGN_IN, SIGN_OUT, SIGN_UP } from "./userActionTypes"
+import {
+  SIGN_IN,
+  SIGN_IN_FAIL,
+  SIGN_OUT,
+  SIGN_UP,
+  SET_LOADING,
+} from "./userActionTypes"
 
 const userReducer = (state, action) => {
   switch (action.type) {
+    case SET_LOADING:
+      return { ...state, loading: true }
     case SIGN_IN:
     case SIGN_UP:
-      return { ...state, isSignedIn: true, userData: action.payload }
+      return {
+        isSignedIn: true,
+        userData: action.payload,
+        error: null,
+        loading: false,
+      }
+    case SIGN_IN_FAIL:
+      return {
+        isSignedIn: false,
+        userData: null,
+        error: { login: action.payload },
+        loading: false,
+      }
     case SIGN_OUT:
-      return { ...state, isSignedIn: false, useData: null }
+      return { ...state, isSignedIn: false, userData: null }
     default:
       break
   }
