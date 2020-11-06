@@ -1,5 +1,5 @@
 import path from "path"
-import fetch from "isomorphic-fetch"
+import axios from "axios"
 import customizeWinaData from "./src/utils/customizeWineData"
 import normalizeWineType from "./src/utils/normalizeWineType"
 
@@ -7,12 +7,12 @@ const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
 
 async function getResultsFromAPI() {
   // agregates multiple api endpoints into one allWines collection
+
   const promises = WINE_TYPES.map(async type => {
     const baseURL = `https://sampleapis.com/wines/api/${type}`
-    const res = await fetch(baseURL)
+    const wines = await axios.get(baseURL)
 
-    const wines = await res.json()
-    return wines.map(wine => customizeWinaData(wine, type))
+    return wines.data.map(wine => customizeWinaData(wine, type))
   })
 
   const wines = await Promise.all(promises).then(values => values.flat())

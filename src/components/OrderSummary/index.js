@@ -21,15 +21,14 @@ const OrderSummary = () => {
   const handleOrderSubmit = () => {
     const Order = {
       items: cart.items,
-      user: user.userData,
-      payment,
-      shipment,
+      userId: user.userData._id,
+      paymentMethod: payment,
+      shipmentMethod: shipment,
       isPaid: false,
       isSent: false,
       isDelivered: false,
       shipmentAddress: address ? address : user.userData.address,
     }
-    console.log(Order)
     sendNewOrder(dispatch, Order)
   }
 

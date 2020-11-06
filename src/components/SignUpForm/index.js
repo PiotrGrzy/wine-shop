@@ -11,8 +11,7 @@ const SignUpForm = () => {
   const { dispatch } = useUser()
 
   const onSubmit = values => {
-    console.log(values)
-    signUpUser(dispatch)
+    signUpUser(dispatch, values)
     navigate(-1)
   }
 
@@ -103,6 +102,17 @@ const SignUpForm = () => {
             },
           }}
           label="Phone number"
+        />
+        <Input
+          name="password"
+          validation={{
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 char long",
+            },
+          }}
+          label="Password"
         />
 
         <Button className="form-btn" type="submit">

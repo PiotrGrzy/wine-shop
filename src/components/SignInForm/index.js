@@ -13,8 +13,7 @@ const SignInForm = () => {
   const isWindow = window !== undefined
 
   const onSubmit = values => {
-    console.log(values)
-    signInUser(dispatch)
+    signInUser(dispatch, values)
     if (isWindow && window.location.pathname !== "/order") {
       navigate(-1)
     }

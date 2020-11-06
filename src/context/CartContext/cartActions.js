@@ -1,5 +1,8 @@
+import axios from "axios"
+
 import {
   ADD_ITEM,
+  CLEAR_CART,
   DECREMENT_ITEM,
   REMOVE_ITEM,
   SEND_NEW_ORDER,
@@ -18,6 +21,20 @@ export const removeItemFromCart = (dispatch, itemId) => {
   dispatch({ type: REMOVE_ITEM, payload: itemId })
 }
 
-export const sendNewOrder = (dispatch, order) => {
-  dispatch({ type: SEND_NEW_ORDER, payload: order })
+export const sendNewOrder = async (dispatch, order) => {
+  const options = {
+    url: `${process.env.GATSBY_API_URL}/order`,
+    method: "post",
+    withCredentials: true,
+    data: order,
+  }
+
+  try {
+    const response = await axios(options)
+
+    console.log(response.data)
+    dispatch({ type: CLEAR_CART })
+  } catch (err) {
+    console.log(err)
+  }
 }
