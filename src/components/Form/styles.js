@@ -65,11 +65,15 @@ const StyledForm = styled.form`
     grid-column: 1 / -1;
     justify-self: center;
   }
+  .error-msg {
+    grid-row: 6/7;
+    grid-column: span 2;
+  }
   .form-link {
-    grid-row: 7/8;
+    grid-row: 8/9;
   }
   .form-btn {
-    grid-row: 6/7;
+    grid-row: 7/8;
   }
 `
 export default StyledForm

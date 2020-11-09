@@ -5,7 +5,7 @@ import RadioGroup from "components/RadioGroup"
 import Button from "components/Button"
 import { shippingMethods } from "consts/shippingMethods"
 import { paymentMethods } from "consts/paymentMethods"
-import { sendNewOrder } from "cartContext/cartActions"
+import { sendNewOrder, setLoading } from "cartContext/cartActions"
 import { useCart } from "cartContext/CartContextProvider"
 import { useUser } from "userContext/UserContextProvider"
 import { StyledSummary } from "./styles"
@@ -19,6 +19,8 @@ const OrderSummary = () => {
   const { user } = useUser()
 
   const handleOrderSubmit = () => {
+    setLoading(dispatch)
+
     const Order = {
       items: cart.items,
       userId: user.userData._id,
@@ -29,6 +31,7 @@ const OrderSummary = () => {
       isDelivered: false,
       shipmentAddress: address ? address : user.userData.address,
     }
+
     sendNewOrder(dispatch, Order)
   }
 
@@ -49,9 +52,14 @@ const OrderSummary = () => {
         title="Payment options:"
         options={paymentMethods}
       />
-      <Button css="width:95%;margin:2rem auto;" onClick={handleOrderSubmit}>
+      <Button
+        loading={cart.loading}
+        css="width:95%;margin:2rem auto;"
+        onClick={handleOrderSubmit}
+      >
         Submit Order
       </Button>
+      <p className="error-msg">{cart.error?.order}</p>
     </StyledSummary>
   )
 }

@@ -1,12 +1,18 @@
-import axios from "axios"
+import { api } from "../../api"
 
 import {
   ADD_ITEM,
   CLEAR_CART,
   DECREMENT_ITEM,
   REMOVE_ITEM,
-  SEND_NEW_ORDER,
+  SEND_NEW_ORDER_FAIL,
+  SEND_NEW_ORDER_SUCCESS,
+  SET_LOADING,
 } from "./cartActionTypes"
+
+export const setLoading = dispatch => {
+  dispatch({ type: SET_LOADING })
+}
 
 export const addItemToCart = (dispatch, cartItem) => {
   console.log(cartItem)
@@ -22,19 +28,12 @@ export const removeItemFromCart = (dispatch, itemId) => {
 }
 
 export const sendNewOrder = async (dispatch, order) => {
-  const options = {
-    url: `${process.env.GATSBY_API_URL}/order`,
-    method: "post",
-    withCredentials: true,
-    data: order,
-  }
-
   try {
-    const response = await axios(options)
-
+    const response = await api.post("/order", order)
     console.log(response.data)
-    dispatch({ type: CLEAR_CART })
+    dispatch({ type: SEND_NEW_ORDER_SUCCESS, payload: response.data })
   } catch (err) {
-    console.log(err)
+    const errMsg = err.response ? err.response.data.msg : "Order sent failed"
+    dispatch({ type: SEND_NEW_ORDER_FAIL, payload: errMsg })
   }
 }

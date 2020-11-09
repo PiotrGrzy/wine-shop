@@ -1,18 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
-import { navigate } from "@reach/router"
+// import { navigate } from "@reach/router"
 import Button from "components/Button"
 import Form from "components/Form"
 import Input from "components/Input"
-import { signUpUser } from "userContext/userActions"
+import { signUpUser, setLoading } from "userContext/userActions"
 import { useUser } from "userContext/UserContextProvider"
 
 const SignUpForm = () => {
-  const { dispatch } = useUser()
+  const { dispatch, user } = useUser()
 
   const onSubmit = values => {
+    setLoading(dispatch)
     signUpUser(dispatch, values)
-    navigate(-1)
+    // navigate(-1)
   }
 
   return (
@@ -115,9 +116,11 @@ const SignUpForm = () => {
           label="Password"
         />
 
-        <Button className="form-btn" type="submit">
+        <Button loading={user.loading} className="form-btn" type="submit">
           Register
         </Button>
+        <p className="error-msg">{user.error?.register}</p>
+
         <Link className="form-link" to="/sign-in">
           Already got an account? Sign in here
         </Link>

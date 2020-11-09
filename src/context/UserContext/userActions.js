@@ -4,6 +4,7 @@ import {
   SIGN_IN,
   SIGN_OUT,
   SIGN_UP,
+  SIGN_UP_FAIL,
   SIGN_IN_FAIL,
   SET_LOADING,
 } from "./userActionTypes"
@@ -35,17 +36,14 @@ export const signInUser = async (dispatch, formData) => {
     const response = await api.post("/user/login", formData)
     dispatch({ type: SIGN_IN, payload: response.data.user })
   } catch (err) {
-    if (err.response) {
-      dispatch({
-        type: SIGN_IN_FAIL,
-        payload: err.response.data.msg,
-      })
-    } else {
-      dispatch({
-        type: SIGN_IN_FAIL,
-        payload: "Server error, pls try again",
-      })
-    }
+    const errMsg = err.response
+      ? err.response.data.msg
+      : "Server error, pls try again"
+
+    dispatch({
+      type: SIGN_IN_FAIL,
+      payload: errMsg,
+    })
   }
 }
 
@@ -77,7 +75,14 @@ export const signUpUser = async (dispatch, formData) => {
     const response = await api.post("/user/register", userData)
     dispatch({ type: SIGN_UP, payload: response.data.user })
   } catch (err) {
-    console.log(err)
+    const errMsg = err.response
+      ? err.response.data.msg
+      : "Server error, pls try again"
+
+    dispatch({
+      type: SIGN_UP_FAIL,
+      payload: errMsg,
+    })
   }
 }
 

@@ -1,8 +1,9 @@
 import {
   SIGN_IN,
   SIGN_IN_FAIL,
-  SIGN_OUT,
   SIGN_UP,
+  SIGN_UP_FAIL,
+  SIGN_OUT,
   SET_LOADING,
 } from "./userActionTypes"
 
@@ -23,6 +24,13 @@ const userReducer = (state, action) => {
         isSignedIn: false,
         userData: null,
         error: { login: action.payload },
+        loading: false,
+      }
+    case SIGN_UP_FAIL:
+      return {
+        isSignedIn: false,
+        userData: null,
+        error: { register: action.payload },
         loading: false,
       }
     case SIGN_OUT:

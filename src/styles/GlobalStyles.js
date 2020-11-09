@@ -69,7 +69,12 @@ fieldset {
 
 
 }
-
+.error-msg {
+    color: #961818;
+    margin-top: 1rem;
+    font-size:1.4rem;
+    text-align:center;
+}
 
 `
 

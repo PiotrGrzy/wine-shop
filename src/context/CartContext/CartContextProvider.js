@@ -5,6 +5,8 @@ import cartReducer from "./cartReducer"
 const CartContext = createContext()
 const initialValue = {
   items: [],
+  loading: false,
+  error: null,
 }
 
 export const CartContextProvider = ({ children }) => {

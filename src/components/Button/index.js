@@ -5,7 +5,13 @@ import { StyledButton } from "./styles"
 const Button = ({ children, loading, ...props }) => {
   return (
     <StyledButton {...props} disabled={loading}>
-      {loading ? <div className="spinner"></div> : <>{children}</>}
+      {loading ? (
+        <div className="spinner"></div>
+      ) : (
+        <>
+          <span>{children}</span>
+        </>
+      )}
     </StyledButton>
   )
 }

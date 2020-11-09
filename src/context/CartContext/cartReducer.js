@@ -3,11 +3,15 @@ import {
   REMOVE_ITEM,
   CLEAR_CART,
   DECREMENT_ITEM,
-  SEND_NEW_ORDER,
+  SEND_NEW_ORDER_SUCCESS,
+  SEND_NEW_ORDER_FAIL,
+  SET_LOADING,
 } from "./cartActionTypes"
 
 const cartReducer = (state, action) => {
   switch (action.type) {
+    case SET_LOADING:
+      return { ...state, loading: true }
     case ADD_ITEM: {
       const itemIndex = state.items.findIndex(
         item => item.data.id === action.payload.data.id
@@ -51,6 +55,15 @@ const cartReducer = (state, action) => {
       )
       return { ...state, items: newItems }
     }
+    case SEND_NEW_ORDER_SUCCESS:
+      return {
+        loading: false,
+        error: { order: null },
+        items: [],
+      }
+    case SEND_NEW_ORDER_FAIL:
+      return { ...state, loading: false, error: { order: action.payload } }
+
     case CLEAR_CART:
       return { ...state, items: [] }
     default:
