@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { navigate } from "@reach/router"
+// import { navigate } from "@reach/router"
 import Form from "components/Form"
 import Input from "components/Input"
 import Button from "components/Button"
@@ -10,7 +10,7 @@ import { signInUser, setLoading } from "userContext/userActions"
 const SignInForm = () => {
   const { dispatch, user } = useUser()
 
-  const isWindow = window !== undefined
+  // const isWindow = window !== undefined
 
   const onSubmit = values => {
     setLoading(dispatch)

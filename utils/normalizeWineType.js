@@ -8,4 +8,4 @@ const normalizeWineType = type => {
   }
 }
 
-export default normalizeWineType
+module.exports = normalizeWineType

@@ -1,7 +1,9 @@
-import path from "path"
-import axios from "axios"
-import customizeWinaData from "./src/utils/customizeWineData"
-import normalizeWineType from "./src/utils/normalizeWineType"
+/* eslint-disable no-undef */
+
+const axios = require("axios")
+const path = require("path")
+const customizeWinaData = require("./utils/customizeWineData.js")
+const normalizeWineType = require("./utils/normalizeWineType.js")
 
 const WINE_TYPES = ["reds", "whites", "sparkling", "rose", "port"]
 
@@ -151,11 +153,11 @@ async function createWineryWinesPages({ graphql, actions }) {
   })
 }
 
-export async function sourceNodes(params) {
+exports.sourceNodes = async params => {
   await Promise.all([createNodesFromWineApiResults(params)])
 }
 
-export async function createPages(params) {
+exports.createPages = async params => {
   await Promise.all([
     createSingleWinePages(params),
     createTypeWinesPages(params),

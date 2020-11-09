@@ -34,4 +34,4 @@ const customizeWinaData = (wine, type) => {
   return newWineData
 }
 
-export default customizeWinaData
+module.exports = customizeWinaData

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { navigate } from "@reach/router"
+// import { navigate } from "@reach/router"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import WineCard from "styles/WineCard"
@@ -47,7 +47,6 @@ const AddButton = styled(Button)`
 `
 
 const Wine = ({ data }) => {
-  console.log(data)
   const [count, setCount] = useState(1)
   const { dispatch } = useCart()
 
@@ -76,7 +75,7 @@ const Wine = ({ data }) => {
   const handleAddToCart = () => {
     const cartItem = { data: data.wines, count }
     addItemToCart(dispatch, cartItem)
-    setTimeout(() => navigate(-1), 2000)
+    // setTimeout(() => navigate(-1), 2000)
   }
 
   const incrementCount = () => {
