@@ -34,6 +34,7 @@ export const setLoading = dispatch => {
 export const signInUser = async (dispatch, formData) => {
   try {
     const response = await api.post("/user/login", formData)
+    console.log(response)
     dispatch({ type: SIGN_IN, payload: response.data.user })
   } catch (err) {
     const errMsg = err.response

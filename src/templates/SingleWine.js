@@ -66,15 +66,15 @@ const Wine = ({ data }) => {
   } = data
 
   const handleChange = e => {
-    const value = parseInt(e.target.value)
-    if (value) {
-      setCount(value)
-    }
+    setCount(e.target.value)
   }
 
   const handleAddToCart = () => {
-    const cartItem = { data: data.wines, count }
-    addItemToCart(dispatch, cartItem)
+    const orderCount = parseInt(count)
+    if (count && count > 0) {
+      const cartItem = { data: data.wines, count: orderCount }
+      addItemToCart(dispatch, cartItem)
+    }
     // setTimeout(() => navigate(-1), 2000)
   }
 
@@ -107,7 +107,7 @@ const Wine = ({ data }) => {
         <p className="price">{price} zł</p>
         <IncButton onClick={incrementCount}>&#43;</IncButton>
         <div className="input">
-          <Input type="text" value={count} onInput={handleChange} />
+          <Input type="text" value={count} onChange={handleChange} />
         </div>
         <DecButton onClick={decrementCount}>&#x2212;</DecButton>
         <AddButton onClick={handleAddToCart}> &#43; Add to Cart</AddButton>

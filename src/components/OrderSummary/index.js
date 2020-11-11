@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import ShipmentAddress from "./ShipmentAddress"
+import AddressForm from "./AddressForm"
+import { shippingMethods } from "consts/shippingMethods"
 import SignInForm from "components/SignInForm"
 import RadioGroup from "components/RadioGroup"
 import Button from "components/Button"
-import { shippingMethods } from "consts/shippingMethods"
+import Checkbox from "components/Checkbox"
 import { paymentMethods } from "consts/paymentMethods"
 import { sendNewOrder, setLoading } from "cartContext/cartActions"
 import { useCart } from "cartContext/CartContextProvider"
@@ -13,10 +15,13 @@ import { StyledSummary } from "./styles"
 const OrderSummary = () => {
   const [payment, setPayment] = useState("credit-card")
   const [shipment, setShipment] = useState("courier")
+  const [useDifferentAddress, setUseDifferentAddress] = useState(false)
   const [address, setAddress] = useState(null)
 
   const { dispatch, cart } = useCart()
   const { user } = useUser()
+
+  const shipmentAddress = address || user.userData
 
   const handleOrderSubmit = () => {
     setLoading(dispatch)
@@ -39,7 +44,18 @@ const OrderSummary = () => {
 
   return (
     <StyledSummary>
-      <ShipmentAddress userData={user.userData} />
+      <ShipmentAddress userData={shipmentAddress} />
+      <Checkbox
+        title="Change shipment address?"
+        state={useDifferentAddress}
+        onChange={() => setUseDifferentAddress(!useDifferentAddress)}
+      />
+      {useDifferentAddress && (
+        <AddressForm
+          setAddress={setAddress}
+          closeForm={() => setUseDifferentAddress(!useDifferentAddress)}
+        />
+      )}
       <RadioGroup
         state={shipment}
         setState={setShipment}
