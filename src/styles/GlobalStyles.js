@@ -66,6 +66,7 @@ fieldset {
 .container {
     max-width:1200px;
     margin: 0 auto;
+    padding:0 1rem;
 
 
 }
@@ -74,6 +75,11 @@ fieldset {
     margin-top: 1rem;
     font-size:1.4rem;
     text-align:center;
+}
+.toast {
+    background-color:var(--primary-light);
+    color:var(----white);
+    font-size:1.8rem;
 }
 
 `

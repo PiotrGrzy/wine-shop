@@ -1,13 +1,13 @@
 import React from "react"
-import { Link } from "gatsby"
-// import { navigate } from "@reach/router"
+import { Link, navigate } from "gatsby"
+import PropTypes from "prop-types"
 import Form from "components/Form"
 import Input from "components/Input"
 import Button from "components/Button"
 import { useUser } from "userContext/UserContextProvider"
 import { signInUser, setLoading } from "userContext/userActions"
 
-const SignInForm = () => {
+const SignInForm = ({ prevLocation }) => {
   const { dispatch, user } = useUser()
 
   // const isWindow = window !== undefined
@@ -15,15 +15,11 @@ const SignInForm = () => {
   const onSubmit = values => {
     setLoading(dispatch)
     signInUser(dispatch, values)
-    // if (
-    //   isWindow &&
-    //   window.location.pathname !== "/order" &&
-    //   !user.error?.login
-    // ) {
-    //   navigate(-1)
-    // }
   }
 
+  if (user.isSignedIn) {
+    navigate(prevLocation)
+  }
   return (
     <>
       <Form onSubmit={onSubmit}>
@@ -59,6 +55,10 @@ const SignInForm = () => {
       </Form>
     </>
   )
+}
+
+SignInForm.propTypes = {
+  prevLocation: PropTypes.string,
 }
 
 export default SignInForm

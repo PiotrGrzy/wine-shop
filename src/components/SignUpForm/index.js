@@ -1,19 +1,22 @@
 import React from "react"
-import { Link } from "gatsby"
-// import { navigate } from "@reach/router"
+import { Link, navigate } from "gatsby"
+import PropTypes from "prop-types"
 import Button from "components/Button"
 import Form from "components/Form"
 import Input from "components/Input"
 import { signUpUser, setLoading } from "userContext/userActions"
 import { useUser } from "userContext/UserContextProvider"
 
-const SignUpForm = () => {
+const SignUpForm = ({ prevLocation }) => {
   const { dispatch, user } = useUser()
 
   const onSubmit = values => {
     setLoading(dispatch)
     signUpUser(dispatch, values)
-    // navigate(-1)
+  }
+
+  if (user.isSignedIn) {
+    navigate(prevLocation)
   }
 
   return (
@@ -127,6 +130,10 @@ const SignUpForm = () => {
       </Form>
     </div>
   )
+}
+
+SignUpForm.propTypes = {
+  prevLocation: PropTypes.string,
 }
 
 export default SignUpForm

@@ -8,6 +8,7 @@ import { WineCard, LinkTitle } from "./styles"
 
 import { useCart } from "cartContext/CartContextProvider"
 import { addItemToCart } from "cartContext/cartActions"
+import { toast } from "react-toastify"
 
 const WineListItem = ({ wine }) => {
   const { dispatch } = useCart()
@@ -15,6 +16,7 @@ const WineListItem = ({ wine }) => {
   const handleAddToCart = () => {
     const cartItem = { data: wine, count: 1 }
     addItemToCart(dispatch, cartItem)
+    toast.info("Wine added to Cart!", { className: "toast" })
   }
 
   const {

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { api } from "../../api"
 
 import {
@@ -36,6 +37,7 @@ export const signInUser = async (dispatch, formData) => {
     const response = await api.post("/user/login", formData)
     console.log(response)
     dispatch({ type: SIGN_IN, payload: response.data.user })
+    toast.info("You have been succesfully signed in", { className: "toast" })
   } catch (err) {
     const errMsg = err.response
       ? err.response.data.msg

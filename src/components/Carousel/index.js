@@ -1,45 +1,29 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Slider, Slide, ButtonBack, ButtonNext } from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
-import { GrNext } from "react-icons/gr"
-import { GrPrevious } from "react-icons/gr"
+import Slider from "react-slick"
 import WineListItem from "components/WineListItem"
-import { StyledCarousel } from "./styles"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
-const WineCarousel = ({ items }) => {
+const settings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+}
+
+const Carousel = ({ items }) => {
   return (
-    <StyledCarousel
-      naturalSlideWidth={300}
-      naturalSlideHeight={400}
-      totalSlides={30}
-      visibleSlides={3}
-      interval={3000}
-      isPlaying={true}
-      isIntrinsicHeight
-      step={3}
-      infinite={true}
-    >
-      <ButtonBack className="scroll-btn">
-        <GrPrevious />
-      </ButtonBack>
-      <Slider>
-        {items.map((item, i) => (
-          <Slide index={i} key={item.id}>
-            <WineListItem wine={item} />
-          </Slide>
-        ))}
-      </Slider>
-      <ButtonNext className="scroll-btn">
-        <GrNext />
-      </ButtonNext>
-    </StyledCarousel>
+    <Slider {...settings}>
+      {items.map(item => (
+        <WineListItem wine={item} key={item.id} />
+      ))}
+    </Slider>
   )
 }
 
-WineCarousel.propTypes = {
+Carousel.propTypes = {
   items: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
 }
 
-export default WineCarousel
+export default Carousel

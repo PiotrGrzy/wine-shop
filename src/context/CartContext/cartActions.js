@@ -1,8 +1,8 @@
 import { api } from "../../api"
+import { navigate } from "gatsby"
 
 import {
   ADD_ITEM,
-  CLEAR_CART,
   DECREMENT_ITEM,
   REMOVE_ITEM,
   SEND_NEW_ORDER_FAIL,
@@ -32,6 +32,7 @@ export const sendNewOrder = async (dispatch, order) => {
     const response = await api.post("/order", order)
     console.log(response.data)
     dispatch({ type: SEND_NEW_ORDER_SUCCESS, payload: response.data })
+    navigate("/success")
   } catch (err) {
     const errMsg = err.response ? err.response.data.msg : "Order sent failed"
     dispatch({ type: SEND_NEW_ORDER_FAIL, payload: errMsg })

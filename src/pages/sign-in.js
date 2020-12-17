@@ -3,13 +3,13 @@ import SEO from "components/SEO"
 import SignInForm from "../components/SignInForm"
 import BgBackDropWrapper from "../styles/BgBackDropWrapper"
 
-const signIn = () => {
+const signIn = ({ location }) => {
   return (
     <>
       <SEO title="Sign In" />
       <div className="container">
         <BgBackDropWrapper>
-          <SignInForm />
+          <SignInForm prevLocation={location.prevLocation} />
         </BgBackDropWrapper>
       </div>
     </>

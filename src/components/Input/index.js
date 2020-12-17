@@ -14,7 +14,7 @@ const Input = ({ register, name, errors, validation, label, ...rest }) => {
 }
 
 Input.propTypes = {
-  register: PropTypes.func.isRequired,
+  register: PropTypes.func,
   name: PropTypes.string.isRequired,
   errors: PropTypes.object,
   validation: PropTypes.object,

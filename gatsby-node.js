@@ -140,8 +140,6 @@ async function createWineryWinesPages({ graphql, actions }) {
     ...new Set(data.allWines.nodes.map(wine => wine.winery)),
   ]
 
-  console.log(uniqueWineries)
-
   uniqueWineries.forEach(winery => {
     createPage({
       path: `/wines/${winery}`,

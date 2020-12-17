@@ -14,6 +14,6 @@ export function wrapPageElement({ element, props }) {
 }
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  console.log("new pathname", location.pathname)
-  console.log("old pathname", prevLocation ? prevLocation.pathname : null)
+  if (location && location.state)
+    location.prevLocation = prevLocation ? prevLocation.pathname : null
 }
