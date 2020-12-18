@@ -4,7 +4,7 @@ export const StyledCheckboxWrapper = styled.div`
   font-size: 1.6rem;
   margin: 1rem 0;
   width: 100%;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
   label {
     display: flex;
     align-items: center;
@@ -32,7 +32,8 @@ export const StyledCheckbox = styled.div`
   align-items: center;
   width: 2rem;
   height: 2rem;
-  border: 2px solid ${props => (props.checked ? "var(--secondary)" : "#a0a0a0")};
+  border: 2px solid
+    ${props => (props.checked ? "var(--primary)" : "var(--grey)")};
   background: var(--white);
   border-radius: 3px;
 

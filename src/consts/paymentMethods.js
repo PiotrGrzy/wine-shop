@@ -1,6 +1,7 @@
 import React from "react"
 
-import { BiCreditCard, BiCreditCardFront } from "react-icons/bi"
+import { BiCreditCard } from "react-icons/bi"
+import { BsTerminal } from "react-icons/bs"
 import { GiReceiveMoney } from "react-icons/gi"
 
 export const paymentMethods = [
@@ -12,7 +13,7 @@ export const paymentMethods = [
   {
     value: "blik",
     label: "Blik",
-    icon: <BiCreditCardFront size="30" />,
+    icon: <BsTerminal size="30" />,
   },
   {
     value: "cash",

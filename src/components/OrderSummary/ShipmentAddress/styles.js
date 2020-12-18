@@ -18,7 +18,7 @@ export const StyledAddress = styled.div`
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--primary);
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--primary);
   border-radius: 5px;
   span {
     font-weight: 400;
@@ -26,6 +26,7 @@ export const StyledAddress = styled.div`
   .title {
     grid-area: title;
     font-size: 2.2rem;
+    font-weight: 400;
   }
   .name {
     grid-area: name;

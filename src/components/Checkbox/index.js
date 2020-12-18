@@ -11,7 +11,7 @@ const Checkbox = ({ title, state, ...rest }) => {
         <HiddenCheckbox id="alt-address" checked={state} {...rest} />
         <span>{title}</span>
         <StyledCheckbox checked={state}>
-          {state && <FaCheck color="var(--secondary)" />}
+          {state && <FaCheck color="var(--primary)" />}
         </StyledCheckbox>
       </label>
     </StyledCheckboxWrapper>

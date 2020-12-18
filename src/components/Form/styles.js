@@ -52,7 +52,7 @@ const StyledForm = styled.form`
     outline: none;
     padding: 0.5rem;
     font-size: 1.6rem;
-    border: 2px solid #a0a0a0;
+    border: 2px solid var(--grey);
     border-radius: 5px;
   }
   input:active,

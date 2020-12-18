@@ -4,17 +4,21 @@ import Slider from "react-slick"
 import WineListItem from "components/WineListItem"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import BtnBack from "./BtnBack"
+import BtnNext from "./BtnNext"
 
-const settings = {
+const carouselSettings = {
   infinite: true,
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 1,
+  nextArrow: <BtnNext />,
+  prevArrow: <BtnBack />,
 }
 
 const Carousel = ({ items }) => {
   return (
-    <Slider {...settings}>
+    <Slider {...carouselSettings}>
       {items.map(item => (
         <WineListItem wine={item} key={item.id} />
       ))}

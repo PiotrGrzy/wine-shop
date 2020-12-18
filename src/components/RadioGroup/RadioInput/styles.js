@@ -14,7 +14,8 @@ export const StyledRadioButton = styled.label`
   font-size: 1.8rem;
   user-select: none;
   background-color: var(--white);
-  border: 2px solid ${props => (props.active ? "var(--secondary)" : "#a0a0a0")};
+  border: 2px solid
+    ${props => (props.active ? "var(--primary)" : "var(--grey)")};
   border-radius: 5px;
   input {
     position: absolute;
@@ -35,7 +36,7 @@ export const StyledRadioButton = styled.label`
     background-color: #ccc;
   }
   input:checked ~ .checkmark {
-    background-color: var(--secondary);
+    background-color: var(--primary);
   }
   .checkmark:after {
     content: "";
