@@ -1,16 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { useCart } from "cartContext/CartContextProvider"
-import { useUser } from "userContext/UserContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
+import { useUserContext } from "userContext/UserContextProvider"
 import { signOutUser } from "userContext/userActions"
-import { ImUser } from "react-icons/im"
-import { RiShoppingCartLine, RiShoppingCart2Fill } from "react-icons/ri"
+import {
+  RiShoppingCartLine,
+  RiShoppingCart2Fill,
+  RiLogoutBoxRLine,
+} from "react-icons/ri"
 import { StyledIcon, StyledTopNav } from "./styles"
 
 const TopNav = ({ siteTitle }) => {
-  const { cart } = useCart()
-  const { user, dispatch } = useUser()
+  const { cart } = useCartContext()
+  const { user, dispatch } = useUserContext()
   return (
     <StyledTopNav className="container">
       <h1>
@@ -20,21 +23,21 @@ const TopNav = ({ siteTitle }) => {
       <div className="cart">
         <Link to="/order">
           {cart.items.length > 0 ? (
-            <RiShoppingCart2Fill />
+            <>
+              <RiShoppingCart2Fill />
+              <span className="cart-counter">{cart.items.length}</span>
+            </>
           ) : (
             <RiShoppingCartLine />
-          )}
-          {cart.items.length > 0 && (
-            <span className="cart-counter">{cart.items.length}</span>
           )}
         </Link>
       </div>
       <div className="user-actions">
         {user.isSignedIn ? (
           <div>
-            <ImUser />
-            <p>Welcome {user.userData.firstName}!</p>
-            <button onClick={() => signOutUser(dispatch)}>Sign Out</button>
+            <button onClick={() => signOutUser(dispatch)}>
+              <RiLogoutBoxRLine style={{ fontSize: "3rem" }} />
+            </button>
           </div>
         ) : (
           <div>

@@ -7,11 +7,11 @@ import {
   decrementItem,
   removeItemFromCart,
 } from "cartContext/cartActions"
-import { useCart } from "cartContext/CartContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
 import { StyledOrderButton, StyledOrderItem } from "./style"
 
 const OrderItem = ({ item }) => {
-  const { dispatch } = useCart()
+  const { dispatch } = useCartContext()
 
   const {
     data: { name, price, image, id },

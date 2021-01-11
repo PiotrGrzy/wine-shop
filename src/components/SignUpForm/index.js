@@ -5,10 +5,10 @@ import Button from "components/Button"
 import Form from "components/Form"
 import Input from "components/Input"
 import { signUpUser, setLoading } from "userContext/userActions"
-import { useUser } from "userContext/UserContextProvider"
+import { useUserContext } from "userContext/UserContextProvider"
 
 const SignUpForm = ({ prevLocation }) => {
-  const { dispatch, user } = useUser()
+  const { dispatch, user } = useUserContext()
 
   const onSubmit = values => {
     setLoading(dispatch)

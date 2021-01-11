@@ -4,13 +4,11 @@ import PropTypes from "prop-types"
 import Form from "components/Form"
 import Input from "components/Input"
 import Button from "components/Button"
-import { useUser } from "userContext/UserContextProvider"
+import { useUserContext } from "userContext/UserContextProvider"
 import { signInUser, setLoading } from "userContext/userActions"
 
 const SignInForm = ({ prevLocation }) => {
-  const { dispatch, user } = useUser()
-
-  // const isWindow = window !== undefined
+  const { dispatch, user } = useUserContext()
 
   const onSubmit = values => {
     setLoading(dispatch)

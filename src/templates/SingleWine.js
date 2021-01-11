@@ -8,7 +8,7 @@ import StyledLink from "styles/StyledLink"
 import Rating from "components/Rating"
 import DiscountBadge from "components/DiscountBadge"
 import BestsellerBadge from "components/BestsellerBadge"
-import { useCart } from "cartContext/CartContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
 import { addItemToCart } from "cartContext/cartActions"
 
 const Button = styled.button`
@@ -48,7 +48,7 @@ const AddButton = styled(Button)`
 
 const Wine = ({ data }) => {
   const [count, setCount] = useState(1)
-  const { dispatch } = useCart()
+  const { dispatch } = useCartContext()
 
   const {
     wines: {

@@ -8,4 +8,8 @@ export const StyledSummary = styled.div`
   h5 {
     font-size: 3rem;
   }
+
+  @media (max-width: 499px) {
+    padding: 1rem;
+  }
 `

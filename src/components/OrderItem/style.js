@@ -5,7 +5,7 @@ export const StyledOrderItem = styled.li`
   grid-template-columns: 10rem 1fr repeat(6, 5rem);
   align-items: center;
   background-color: var(--white);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border: 1px solid var(--secondary-light);
   img {
     height: 10rem;
@@ -14,6 +14,9 @@ export const StyledOrderItem = styled.li`
   }
   span {
     text-align: center;
+  }
+  @media (max-width: 499px) {
+    grid-template-columns: 4rem 1fr repeat(6, 4rem);
   }
 `
 export const StyledOrderButton = styled.button`

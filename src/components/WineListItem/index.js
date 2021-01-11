@@ -6,12 +6,12 @@ import BestsellerBadge from "components/BestsellerBadge"
 import DiscountBadge from "components/DiscountBadge"
 import { WineCard, LinkTitle } from "./styles"
 
-import { useCart } from "cartContext/CartContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
 import { addItemToCart } from "cartContext/cartActions"
 import { toast } from "react-toastify"
 
 const WineListItem = ({ wine }) => {
-  const { dispatch } = useCart()
+  const { dispatch } = useCartContext()
 
   const handleAddToCart = () => {
     const cartItem = { data: wine, count: 1 }

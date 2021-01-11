@@ -46,4 +46,8 @@ export const StyledAddress = styled.div`
   .postal-code {
     grid-area: postal-code;
   }
+
+  @media (max-width: 699px) {
+    padding: 1rem;
+  }
 `

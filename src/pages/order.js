@@ -2,7 +2,7 @@ import React from "react"
 import OrderItem from "components/OrderItem"
 import OrderSummary from "components/OrderSummary"
 import styled from "styled-components"
-import { useCart } from "cartContext/CartContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
 import SEO from "components/SEO"
 
 const StyledOrder = styled.div`
@@ -10,12 +10,18 @@ const StyledOrder = styled.div`
   margin-top: 2rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.6);
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 
   ol {
-    flex: 5;
     margin-right: 2rem;
     box-shadow: var(--box-shadow);
     background-color: var(--white);
+    @media (max-width: 1100px) {
+      flex: auto;
+      margin-right: 0;
+    }
   }
   .total {
     margin-top: 1rem;
@@ -25,10 +31,14 @@ const StyledOrder = styled.div`
     font-size: 2rem;
     border: 1px solid var(--secondary-light);
   }
+
+  @media (max-width: 699px) {
+    padding: 0;
+  }
 `
 
 const Order = () => {
-  const { cart } = useCart()
+  const { cart } = useCartContext()
 
   const total = cart.items.reduce((total, item) => {
     return (total += item.count * item.data.price)

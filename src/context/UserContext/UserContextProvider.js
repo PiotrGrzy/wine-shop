@@ -21,7 +21,7 @@ export const UserContextProvider = ({ children }) => {
   )
 }
 
-export const useUser = () => {
+export const useUserContext = () => {
   const context = useContext(UserContext)
   if (!context) {
     throw new Error("No context provided")

@@ -13,7 +13,7 @@ export const WineCard = styled.li`
   display: grid;
   padding: 2rem;
   grid-template-columns: 75px 1fr;
-  gap: 3rem;
+  gap: 2rem;
   border: 1px solid var(--secondary-light);
   border-radius: 5px;
   box-shadow: var(--box-shadow);

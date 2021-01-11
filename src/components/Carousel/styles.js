@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const StyledArrow = styled.div`
-  background-color: red;
+  background-color: var(--bg-backdrop-white);
+  opacity: 0.7;
   padding: 1rem;
   position: absolute;
   z-index: 100;
@@ -13,6 +14,10 @@ export const StyledArrow = styled.div`
   cursor: pointer;
   ${props => (props.left ? "left:-35px;" : "")}
   ${props => (props.right ? "right:-35px;" : "")}
+
+  :hover {
+    background-color: var(--secondary);
+  }
 
   ::before {
     display: none;

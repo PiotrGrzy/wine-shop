@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { BiCaretDown, BiCaretUp } from "react-icons/bi"
 import { StyledDropdown, StyledToggler, Links } from "./styles"
 
-const NavDropdown = ({ children }) => {
+const NavDropdown = ({ children, category, position }) => {
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {
@@ -12,16 +12,22 @@ const NavDropdown = ({ children }) => {
   return (
     <StyledDropdown>
       <StyledToggler onClick={handleClick}>
-        Regions {open ? <BiCaretUp /> : <BiCaretDown />}
+        {category} {open ? <BiCaretUp /> : <BiCaretDown />}
       </StyledToggler>
 
-      {open && <Links onClick={handleClick}>{children}</Links>}
+      {open && (
+        <Links position={position} onClick={handleClick}>
+          {children}
+        </Links>
+      )}
     </StyledDropdown>
   )
 }
 
 NavDropdown.propTypes = {
   children: PropTypes.node,
+  category: PropTypes.string,
+  position: PropTypes.string,
 }
 
 export default NavDropdown

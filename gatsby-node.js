@@ -11,7 +11,7 @@ async function getResultsFromAPI() {
   // agregates multiple api endpoints into one allWines collection
 
   const promises = WINE_TYPES.map(async type => {
-    const baseURL = `https://sampleapis.com/wines/api/${type}`
+    const baseURL = `https://api.sampleapis.com/wines/${type}`
     const wines = await axios.get(baseURL)
 
     return wines.data.map(wine => customizeWinaData(wine, type))

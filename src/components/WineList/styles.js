@@ -19,6 +19,15 @@ export const StyledSortingWrapper = styled.div`
     font-size: 1.6rem;
     padding: 0.5rem;
   }
+
+  @media (max-width: 699px) {
+    flex-direction: column;
+    justify-content: center;
+    label {
+      width: 95vw;
+      margin-bottom: 5px;
+    }
+  } ;
 `
 export const StyledTitle = styled.div`
   text-align: center;

@@ -18,7 +18,7 @@ export const CartContextProvider = ({ children }) => {
   )
 }
 
-export const useCart = () => {
+export const useCartContext = () => {
   const context = useContext(CartContext)
   if (!context) {
     throw new Error("No context provided")

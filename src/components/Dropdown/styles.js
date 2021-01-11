@@ -9,7 +9,6 @@ export const StyledToggler = styled.button`
   outline: none;
   display: block;
   font-size: 2rem;
-  color: ${({ color }) => color};
   transition: color 0.2s;
   text-transform: capitalize;
   border-bottom: 1px solid transparent;
@@ -27,12 +26,12 @@ export const Links = styled.div`
   position: absolute;
   z-index: 10;
   bottom: 0;
-  right: 0;
+  right: ${({ position }) => (position === "left" ? "auto" : "0")};
   transform: translateY(100%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: min(80rem, 90vw);
   padding: 1rem;
-
+  text-align: center;
   background-color: var(--primary-light);
 `

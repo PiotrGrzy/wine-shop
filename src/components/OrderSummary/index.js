@@ -8,8 +8,8 @@ import Button from "components/Button"
 import Checkbox from "components/Checkbox"
 import { paymentMethods } from "consts/paymentMethods"
 import { sendNewOrder, setLoading } from "cartContext/cartActions"
-import { useCart } from "cartContext/CartContextProvider"
-import { useUser } from "userContext/UserContextProvider"
+import { useCartContext } from "cartContext/CartContextProvider"
+import { useUserContext } from "userContext/UserContextProvider"
 import { StyledSummary } from "./styles"
 
 const OrderSummary = () => {
@@ -18,8 +18,8 @@ const OrderSummary = () => {
   const [useDifferentAddress, setUseDifferentAddress] = useState(false)
   const [address, setAddress] = useState(null)
 
-  const { dispatch, cart } = useCart()
-  const { user } = useUser()
+  const { dispatch, cart } = useCartContext()
+  const { user } = useUserContext()
 
   const shipmentAddress = address || user.userData
 

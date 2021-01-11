@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
     --secondary-light: #ead7d7ff;
     --bg-backdrop-white:  rgba(255, 255, 255, 0.6);
     --box-shadow:rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    --media-tablet:699px;
 }
 
 html {
@@ -23,7 +25,9 @@ html {
 
 /* background-color: var(--secondary-light);
 background-image: linear-gradient(90deg, var(--secondary-light) 0%, var(--white) 100%); */
-
+@media (max-width:699px) {
+    font-size:8px;
+}
 }
 *,
 *::before,
@@ -79,8 +83,8 @@ fieldset {
 }
 .toast {
     background-color:var(--primary-light);
-    color:var(----white);
-    font-size:1.8rem;
+    color:var(--white);
+    font-size:1.6rem;
 }
 
 `
