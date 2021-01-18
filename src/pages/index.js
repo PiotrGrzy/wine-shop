@@ -17,9 +17,15 @@ const StyledWrapper = styled.div`
     color: var(--primary);
   }
 
-  .slick-slider {
+  /* .offer {
     width: auto;
+    max-width: 100%;
   }
+  .slick-slider {
+    margin: 30px auto 50px;
+    width: auto;
+    max-width: 100%;
+  } */
 `
 
 const IndexPage = ({ data }) => {
@@ -49,7 +55,7 @@ export const query = graphql`
   {
     allBestSellers: allWines(
       filter: { isBestSeller: { eq: true } }
-      limit: 30
+      limit: 15
     ) {
       totalCount
       nodes {
@@ -72,7 +78,7 @@ export const query = graphql`
         discountPercentage
       }
     }
-    allDiscounted: allWines(filter: { isDiscounted: { eq: true } }, limit: 30) {
+    allDiscounted: allWines(filter: { isDiscounted: { eq: true } }, limit: 15) {
       totalCount
       nodes {
         image

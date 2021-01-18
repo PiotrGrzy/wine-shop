@@ -18,6 +18,7 @@ const StyledOrder = styled.div`
     margin-right: 2rem;
     box-shadow: var(--box-shadow);
     background-color: var(--white);
+    flex: 5;
     @media (max-width: 1100px) {
       flex: auto;
       margin-right: 0;

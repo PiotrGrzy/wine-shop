@@ -23,8 +23,6 @@ html {
     background-image:url(${bg});
    background-position:fixed;
 
-/* background-color: var(--secondary-light);
-background-image: linear-gradient(90deg, var(--secondary-light) 0%, var(--white) 100%); */
 @media (max-width:699px) {
     font-size:8px;
 }

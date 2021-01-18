@@ -1,9 +1,9 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { GrPrevious } from "react-icons/gr"
 import { StyledArrow } from "../styles"
 
-const BtnBack = props => {
-  const { className, onClick } = props
+const BtnBack = ({ onClick }) => {
   return (
     <StyledArrow onClick={onClick} left={true}>
       <GrPrevious size="30" />
@@ -12,3 +12,7 @@ const BtnBack = props => {
 }
 
 export default BtnBack
+
+BtnBack.propTypes = {
+  onClick: PropTypes.func,
+}
