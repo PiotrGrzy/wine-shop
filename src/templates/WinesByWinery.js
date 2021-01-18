@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import WineList from "../components/WineList"
+import { normalizeWineType } from "utils/normalizeWineType"
+import SEO from "components/SEO"
 
 const WinesByWinery = ({ data, pageContext }) => {
   const {
@@ -11,6 +13,7 @@ const WinesByWinery = ({ data, pageContext }) => {
   if (!wines) return <p>Wines not found</p>
   return (
     <div className="container">
+      <SEO title={`${normalizeWineType(pageContext.slug)} Winery Wines`} />
       <WineList
         wines={wines}
         total={totalCount}

@@ -6,9 +6,12 @@ import Form from "components/Form"
 import Input from "components/Input"
 import { signUpUser, setLoading } from "userContext/userActions"
 import { useUserContext } from "userContext/UserContextProvider"
+import { useMedia } from "../../hooks/useMedia"
 
 const SignUpForm = ({ prevLocation }) => {
   const { dispatch, user } = useUserContext()
+  const mediaMatch = useMedia("(max-width:530px)")
+  console.log(mediaMatch)
 
   const onSubmit = values => {
     setLoading(dispatch)
@@ -21,7 +24,7 @@ const SignUpForm = ({ prevLocation }) => {
 
   return (
     <div>
-      <Form onSubmit={onSubmit} grid={true}>
+      <Form onSubmit={onSubmit} grid={!mediaMatch}>
         <Input
           type="text"
           name="firstName"

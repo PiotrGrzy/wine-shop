@@ -10,10 +10,33 @@ import BtnNext from "./BtnNext"
 const carouselSettings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   nextArrow: <BtnNext />,
   prevArrow: <BtnBack />,
+  // autoplay: true,
+  // autoplaySpeed: 2000,
+  cssEase: "linear",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
 }
 
 const Carousel = ({ items }) => {

@@ -5,18 +5,9 @@ import Pagination from "components/Pagination"
 import WineListItem from "components/WineListItem"
 import WineListStyles from "styles/WineListStyles"
 import StyledSelect from "styles/StyledSelect"
+import { normalizeWineType } from "utils/normalizeWineType"
 import { NAME_ASC, NAME_DES, PRICE_ASC, PRICE_DES } from "consts/sortingOptions"
 import { StyledTitle, StyledSortingWrapper } from "./styles"
-
-const normalizeWineType = type => {
-  if (type === "reds") {
-    return "red"
-  } else if (type === "whites") {
-    return "white"
-  } else {
-    return type
-  }
-}
 
 const WineList = ({ wines, total, title }) => {
   const [searchQuery, setSearchQuery] = useState("")

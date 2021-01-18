@@ -10,6 +10,7 @@ import DiscountBadge from "components/DiscountBadge"
 import BestsellerBadge from "components/BestsellerBadge"
 import { useCartContext } from "cartContext/CartContextProvider"
 import { addItemToCart } from "cartContext/cartActions"
+import SEO from "components/SEO"
 
 const Button = styled.button`
   width: 100%;
@@ -88,6 +89,7 @@ const Wine = ({ data }) => {
 
   return (
     <div className="container">
+      <SEO />
       <WineCard>
         <img src={image} alt={name} />
         <div className="heading">

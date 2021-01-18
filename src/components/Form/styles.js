@@ -17,6 +17,11 @@ const StyledForm = styled.form`
   font-size: 1.4rem;
   box-shadow: var(--box-shadow);
   border: radius;
+  /* @media (max-width: 530px) {
+    grid-template-columns: 1fr;
+  } */
+  /* @media (max-width: '550px') {
+    grid-template-columns: 1fr; */
 
   /* background: -webkit-linear-gradient(
     to right,
