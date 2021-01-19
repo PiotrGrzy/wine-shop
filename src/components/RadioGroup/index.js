@@ -5,7 +5,6 @@ import { StyledTitle } from "./styles"
 
 const RadioGroup = ({ state, setState, title, options }) => {
   const handleChange = e => {
-    console.log(e.target.value, state)
     setState(e.target.value)
   }
 

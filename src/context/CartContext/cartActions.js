@@ -15,7 +15,6 @@ export const setLoading = dispatch => {
 }
 
 export const addItemToCart = (dispatch, cartItem) => {
-  console.log(cartItem)
   dispatch({ type: ADD_ITEM, payload: cartItem })
 }
 
@@ -30,7 +29,6 @@ export const removeItemFromCart = (dispatch, itemId) => {
 export const sendNewOrder = async (dispatch, order) => {
   try {
     const response = await api.post("/order", order)
-    console.log(response.data)
     dispatch({ type: SEND_NEW_ORDER_SUCCESS, payload: response.data })
     navigate("/success")
   } catch (err) {

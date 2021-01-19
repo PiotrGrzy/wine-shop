@@ -11,7 +11,6 @@ import { useMedia } from "../../hooks/useMedia"
 const SignUpForm = ({ prevLocation }) => {
   const { dispatch, user } = useUserContext()
   const mediaMatch = useMedia("(max-width:530px)")
-  console.log(mediaMatch)
 
   const onSubmit = values => {
     setLoading(dispatch)
