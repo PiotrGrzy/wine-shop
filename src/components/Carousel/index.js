@@ -14,24 +14,24 @@ const carouselSettings = {
   slidesToScroll: 1,
   nextArrow: <BtnNext />,
   prevArrow: <BtnBack />,
-  // autoplay: true,
-  // autoplaySpeed: 2000,
+  autoplay: true,
+  autoplaySpeed: 2000,
   cssEase: "linear",
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1100,
       settings: {
         slidesToShow: 3,
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 860,
       settings: {
         slidesToShow: 2,
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 560,
       settings: {
         slidesToShow: 1,
       },

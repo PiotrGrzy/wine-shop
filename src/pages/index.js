@@ -17,15 +17,13 @@ const StyledWrapper = styled.div`
     color: var(--primary);
   }
 
-  /* .offer {
-    width: auto;
-    max-width: 100%;
+  .offer {
   }
-  .slick-slider {
+  /* .slick-slider {
     margin: 30px auto 50px;
     width: auto;
     max-width: 100%;
-  } */
+  }  */
 `
 
 const IndexPage = ({ data }) => {
