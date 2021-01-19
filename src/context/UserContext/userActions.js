@@ -76,6 +76,7 @@ export const signUpUser = async (dispatch, formData) => {
   try {
     const response = await api.post("/user/register", userData)
     dispatch({ type: SIGN_UP, payload: response.data.user })
+    toast.info("You have been succesfully signed up", { className: "toast" })
   } catch (err) {
     const errMsg = err.response
       ? err.response.data.msg
