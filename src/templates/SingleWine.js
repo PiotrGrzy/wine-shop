@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-// import { navigate } from "@reach/router"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import WineCard from "styles/WineCard"
@@ -10,6 +9,7 @@ import DiscountBadge from "components/DiscountBadge"
 import BestsellerBadge from "components/BestsellerBadge"
 import { useCartContext } from "cartContext/CartContextProvider"
 import { addItemToCart } from "cartContext/cartActions"
+import { toast } from "react-toastify"
 import SEO from "components/SEO"
 
 const Button = styled.button`
@@ -47,6 +47,13 @@ const AddButton = styled(Button)`
   border-bottom-left-radius: 1rem;
 `
 
+const WineryLink = styled(StyledLink)`
+  &:hover {
+    color: var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+  }
+`
+
 const Wine = ({ data }) => {
   const [count, setCount] = useState(1)
   const { dispatch } = useCartContext()
@@ -75,8 +82,9 @@ const Wine = ({ data }) => {
     if (count && count > 0) {
       const cartItem = { data: data.wines, count: orderCount }
       addItemToCart(dispatch, cartItem)
+      setCount(1)
+      toast.info("Wine added to Cart!", { className: "toast" })
     }
-    // setTimeout(() => navigate(-1), 2000)
   }
 
   const incrementCount = () => {
@@ -95,7 +103,7 @@ const Wine = ({ data }) => {
         <div className="heading">
           <h1>{name}</h1>
           <p className="winery">
-            Winery: <StyledLink to={`/wines/${winery}`}>{winery}</StyledLink>
+            Winery: <WineryLink to={`/wines/${winery}`}>{winery}</WineryLink>
           </p>
         </div>
         <p className="location">

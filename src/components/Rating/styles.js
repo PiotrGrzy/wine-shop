@@ -6,4 +6,8 @@ export const StyledRating = styled.div`
   display: grid;
   column-gap: 5px;
   grid-auto-flow: column;
+
+  @media (max-width: 549px) {
+    column-gap: 2px;
+  }
 `

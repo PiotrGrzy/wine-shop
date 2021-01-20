@@ -7,9 +7,7 @@ const WineCard = styled.div`
   grid-template-rows: 10rem repeat(7, 7rem);
   align-items: stretch;
   max-width: 1000px;
-
   margin: 2rem auto;
-
   border-radius: 1rem;
   border-top: 1rem solid var(--primary-light);
   box-shadow: var(--box-shadow);
@@ -63,10 +61,19 @@ const WineCard = styled.div`
     font-size: 1.4rem;
     padding: 0 2rem;
     line-height: 2rem;
+    @media (max-width: 450px) {
+      font-size: 1.2rem;
+      padding: 0 1rem;
+      line-height: 1.6rem;
+    }
   }
   .rating {
     grid-area: 5/2/6/-1;
     font-size: 2rem;
+
+    @media (max-width: 549px) {
+      font-size: 1rem;
+    }
   }
   .price {
     grid-area: 6/2/7/-1;
